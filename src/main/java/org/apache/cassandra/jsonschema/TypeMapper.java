@@ -84,7 +84,7 @@ public class TypeMapper
             return nullableTypeNode("boolean");
 
         if (clazz == String.class)
-            return nullableTypeNode("string");
+            return typeNode("string");
 
         // Enums
         if (clazz.isEnum())

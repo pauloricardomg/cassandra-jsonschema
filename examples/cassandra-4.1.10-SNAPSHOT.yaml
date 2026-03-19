@@ -1621,12 +1621,12 @@ audit_logging_options:
   logger:
     - class_name: BinAuditLogger
   audit_logs_dir: /tmp/audit_logs
-  included_keyspaces:
+  #  included_keyspaces:
   excluded_keyspaces: system, system_schema, system_virtual_schema
-  included_categories:
-  excluded_categories:
-  included_users:
-  excluded_users:
+  #included_categories:
+  #excluded_categories:
+  #included_users:
+  #excluded_users:
   roll_cycle: HOURLY
   block: true
   max_queue_weight: 268435456 # 256 MiB

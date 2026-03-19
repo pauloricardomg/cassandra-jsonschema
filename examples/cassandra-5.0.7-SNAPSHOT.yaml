@@ -62,7 +62,7 @@ allocate_tokens_for_local_replication_factor: 3
 # vnodes (num_tokens > 1, above) -- in which case you should provide a
 # comma-separated list -- it's primarily used when adding nodes to legacy clusters
 # that do not have vnodes enabled.
-initial_token:
+#initial_token:
 
 # May either be "true" or "false" to enable globally
 hinted_handoff_enabled: true
@@ -400,7 +400,7 @@ data_file_directories:
 # by data_file_directories.
 # This approach ensures that if one of the other disks is lost Cassandra can continue to operate. For extra security
 # this setting allows to store those data on a different directory that provides redundancy.
-local_system_data_file_directory:
+#local_system_data_file_directory:
 
 # commit log.  when running on magnetic HDD, this should be a
 # separate spindle than the data directories.
@@ -1865,13 +1865,13 @@ audit_logging_options:
   enabled: false
   logger:
     - class_name: BinAuditLogger
-  audit_logs_dir:
-  included_keyspaces:
+  audit_logs_dir: /tmp/audit_log
+#  included_keyspaces:
   excluded_keyspaces: system, system_schema, system_virtual_schema
-  included_categories:
-  excluded_categories:
-  included_users:
-  excluded_users:
+#  included_categories:
+#  excluded_categories:
+#  included_users:
+#  excluded_users:
   roll_cycle: HOURLY
   block: true
   max_queue_weight: 268435456 # 256 MiB
@@ -1880,19 +1880,19 @@ audit_logging_options:
   ## If archive_command is empty or unset, Cassandra uses a built-in DeletingArchiver that deletes the oldest files if ``max_log_size`` is reached.
   ## If archive_command is set, Cassandra does not use DeletingArchiver, so it is the responsibility of the script to make any required cleanup.
   ## Example: "/path/to/script.sh %path" where %path is replaced with the file being rolled.
-  archive_command:
+  archive_command: /path/to/script.sh %path
   max_archive_retries: 10
 
 # default options for full query logging - these can be overridden from command line when executing
 # nodetool enablefullquerylog
 full_query_logging_options:
-  log_dir:
+  log_dir: /tmp/fql
   roll_cycle: HOURLY
   block: true
   max_queue_weight: 268435456 # 256 MiB
   max_log_size: 17179869184 # 16 GiB
   ## archive command is "/path/to/script.sh %path" where %path is replaced with the file being rolled:
-  archive_command:
+  archive_command: /path/to/script.sh %path
   ## note that enabling this allows anyone with JMX/nodetool access to run local shell commands as the user running cassandra
   allow_nodetool_archive_command: false
   max_archive_retries: 10

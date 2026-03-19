@@ -71,9 +71,7 @@ class TypeMapperTest
     void testString()
     {
         ObjectNode schema = mapper.mapType(String.class);
-        assertThat(schema.get("type").isArray()).isTrue();
-        assertThat(schema.get("type").get(0).asText()).isEqualTo("string");
-        assertThat(schema.get("type").get(1).asText()).isEqualTo("null");
+        assertThat(schema.get("type").asText()).isEqualTo("string");
     }
 
     enum TestEnum { A, B, C }
