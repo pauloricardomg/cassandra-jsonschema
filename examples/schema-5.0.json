@@ -4,7 +4,7 @@
   "type" : "object",
   "properties" : {
     "cluster_name" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "authenticator" : {
       "description" : "Pluggable class with optional parameters.",
@@ -365,7 +365,7 @@
       "type" : "boolean"
     },
     "partitioner" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "auto_bootstrap" : {
       "type" : "boolean"
@@ -377,7 +377,7 @@
       "type" : "array",
       "uniqueItems" : true,
       "items" : {
-        "type" : [ "string", "null" ]
+        "type" : "string"
       }
     },
     "max_hint_window" : {
@@ -402,7 +402,7 @@
       "deprecated" : true
     },
     "hints_directory" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "hint_window_persistent_enabled" : {
       "type" : "boolean"
@@ -486,13 +486,13 @@
       "deprecated" : true
     },
     "initial_token" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "num_tokens" : {
       "type" : [ "integer", "null" ]
     },
     "allocate_tokens_for_keyspace" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "allocate_tokens_for_local_replication_factor" : {
       "type" : [ "integer", "null" ]
@@ -856,16 +856,16 @@
       "type" : "integer"
     },
     "listen_address" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "listen_interface" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "listen_interface_prefer_ipv6" : {
       "type" : "boolean"
     },
     "broadcast_address" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "listen_on_broadcast_address" : {
       "type" : "boolean"
@@ -905,16 +905,16 @@
       "type" : "boolean"
     },
     "rpc_address" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "rpc_interface" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "rpc_interface_prefer_ipv6" : {
       "type" : "boolean"
     },
     "broadcast_rpc_address" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "rpc_keepalive" : {
       "type" : "boolean"
@@ -1349,7 +1349,7 @@
       "type" : "boolean"
     },
     "auto_snapshot_ttl" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "snapshot_links_per_second" : {
       "type" : "integer"
@@ -1580,20 +1580,20 @@
     "data_file_directories" : {
       "type" : "array",
       "items" : {
-        "type" : [ "string", "null" ]
+        "type" : "string"
       }
     },
     "sstable" : {
       "$ref" : "#/$defs/Config_SSTableConfig"
     },
     "local_system_data_file_directory" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "saved_caches_directory" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "commitlog_directory" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "commitlog_total_space" : {
       "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
@@ -1808,7 +1808,7 @@
       "type" : "boolean"
     },
     "cdc_raw_directory" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "cdc_total_space" : {
       "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
@@ -1853,7 +1853,7 @@
       "deprecated" : true
     },
     "endpoint_snitch" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "dynamic_snitch" : {
       "type" : "boolean"
@@ -1904,7 +1904,7 @@
       "type" : "number"
     },
     "failure_detector" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "server_encryption_options" : {
       "$ref" : "#/$defs/EncryptionOptions_ServerEncryptionOptions"
@@ -2175,7 +2175,7 @@
       "deprecated" : true
     },
     "row_cache_class_name" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "row_cache_size" : {
       "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
@@ -2554,7 +2554,7 @@
       "deprecated" : true
     },
     "otc_coalescing_strategy" : {
-      "type" : [ "string", "null" ],
+      "type" : "string",
       "deprecated" : true
     },
     "otc_coalescing_window_us" : {
@@ -2853,10 +2853,10 @@
       "type" : "boolean"
     },
     "auth_read_consistency_level" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "auth_write_consistency_level" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "partition_denylist_enabled" : {
       "type" : "boolean"
@@ -3031,21 +3031,21 @@
       "type" : "array",
       "uniqueItems" : true,
       "items" : {
-        "type" : [ "string", "null" ]
+        "type" : "string"
       }
     },
     "table_properties_ignored" : {
       "type" : "array",
       "uniqueItems" : true,
       "items" : {
-        "type" : [ "string", "null" ]
+        "type" : "string"
       }
     },
     "table_properties_disallowed" : {
       "type" : "array",
       "uniqueItems" : true,
       "items" : {
-        "type" : [ "string", "null" ]
+        "type" : "string"
       }
     },
     "read_consistency_levels_warned" : {
@@ -3102,7 +3102,7 @@
       "type" : "boolean"
     },
     "default_secondary_index" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "default_secondary_index_enabled" : {
       "type" : "boolean"
@@ -3479,20 +3479,20 @@
       "type" : "array",
       "uniqueItems" : true,
       "items" : {
-        "type" : [ "string", "null" ]
+        "type" : "string"
       }
     },
     "paxos_contention_wait_randomizer" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "paxos_contention_min_wait" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "paxos_contention_max_wait" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "paxos_contention_min_delta" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "paxos_repair_parallelism" : {
       "type" : "integer"
@@ -3563,7 +3563,7 @@
       "type" : "boolean"
     },
     "heap_dump_path" : {
-      "type" : [ "string", "null" ]
+      "type" : "string"
     },
     "severity_during_decommission" : {
       "type" : "number"
@@ -3662,7 +3662,7 @@
           "type" : "array",
           "uniqueItems" : true,
           "items" : {
-            "type" : [ "string", "null" ]
+            "type" : "string"
           }
         },
         "repair_primary_token_range_only" : {
@@ -3762,10 +3762,10 @@
           "type" : "boolean"
         },
         "outbound_keystore" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "outbound_keystore_password" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "logger" : {
           "$ref" : "#/$defs/org_slf4j_Logger"
@@ -3802,37 +3802,37 @@
           } ]
         },
         "keystore" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "keystore_password" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "truststore" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "truststore_password" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "cipher_suites" : {
           "type" : "array",
           "items" : {
-            "type" : [ "string", "null" ]
+            "type" : "string"
           }
         },
         "protocol" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "accepted_protocols" : {
           "type" : "array",
           "items" : {
-            "type" : [ "string", "null" ]
+            "type" : "string"
           }
         },
         "algorithm" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "store_type" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "require_client_auth" : {
           "type" : "boolean"
@@ -3862,15 +3862,15 @@
       "type" : "object",
       "properties" : {
         "inherits" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "class_name" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "parameters" : {
           "type" : "object",
           "additionalProperties" : {
-            "type" : [ "string", "null" ]
+            "type" : "string"
           }
         }
       },
@@ -3947,34 +3947,34 @@
           } ]
         },
         "included_keyspaces" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "excluded_keyspaces" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "included_categories" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "excluded_categories" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "included_users" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "excluded_users" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "audit_logs_dir" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "archive_command" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "allow_nodetool_archive_command" : {
           "type" : "boolean"
         },
         "roll_cycle" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "block" : {
           "type" : "boolean"
@@ -4001,10 +4001,10 @@
           "type" : "integer"
         },
         "cipher" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "key_alias" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "iv_length" : {
           "type" : "integer"
@@ -4117,16 +4117,16 @@
       "type" : "object",
       "properties" : {
         "log_dir" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "archive_command" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "allow_nodetool_archive_command" : {
           "type" : "boolean"
         },
         "roll_cycle" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "block" : {
           "type" : "boolean"
@@ -4147,14 +4147,14 @@
       "type" : "object",
       "properties" : {
         "selected_format" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "format" : {
           "type" : "object",
           "additionalProperties" : {
             "type" : "object",
             "additionalProperties" : {
-              "type" : [ "string", "null" ]
+              "type" : "string"
             }
           }
         }
@@ -4337,37 +4337,37 @@
           } ]
         },
         "keystore" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "keystore_password" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "truststore" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "truststore_password" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "cipher_suites" : {
           "type" : "array",
           "items" : {
-            "type" : [ "string", "null" ]
+            "type" : "string"
           }
         },
         "protocol" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "accepted_protocols" : {
           "type" : "array",
           "items" : {
-            "type" : [ "string", "null" ]
+            "type" : "string"
           }
         },
         "algorithm" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "store_type" : {
-          "type" : [ "string", "null" ]
+          "type" : "string"
         },
         "require_client_auth" : {
           "type" : "boolean"
