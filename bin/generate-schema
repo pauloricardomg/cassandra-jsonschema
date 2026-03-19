@@ -1,0 +1,28 @@
+#!/bin/bash
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.
+
+
+if [ $# -ne 2 ]; then
+    echo "Usage: bin/generate-schema <cassandra.jar> <output.json>" >&2
+    echo "" >&2
+    echo "Generates a JSON Schema from a Cassandra JAR's Config.java via reflection." >&2
+    echo "" >&2
+    echo "Arguments:" >&2
+    echo "  cassandra.jar  Path to a Cassandra JAR (e.g., lib/apache-cassandra-5.1-SNAPSHOT.jar)" >&2
+    echo "  output.json    Path to write the generated JSON Schema" >&2
+    echo "" >&2
+    echo "Example:" >&2
+    echo "  bin/generate-schema lib/apache-cassandra-5.1-SNAPSHOT.jar target/schema-5.1.json" >&2
+    exit 1
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+CLASSPATH="$PROJECT_DIR/target/classes"
+for jar in "$PROJECT_DIR"/target/lib/*.jar; do
+    CLASSPATH="$CLASSPATH:$jar"
+done
+
+exec java -cp "$CLASSPATH" org.apache.cassandra.jsonschema.GenerateSchema "$@"

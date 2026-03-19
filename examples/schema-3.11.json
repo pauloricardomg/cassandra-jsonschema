@@ -1,0 +1,1027 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "title" : "Apache Cassandra Configuration",
+  "type" : "object",
+  "properties" : {
+    "cluster_name" : {
+      "type" : [ "string", "null" ]
+    },
+    "authenticator" : {
+      "type" : [ "string", "null" ]
+    },
+    "authorizer" : {
+      "type" : [ "string", "null" ]
+    },
+    "role_manager" : {
+      "type" : [ "string", "null" ]
+    },
+    "permissions_validity_in_ms" : {
+      "type" : "integer"
+    },
+    "permissions_cache_max_entries" : {
+      "type" : "integer"
+    },
+    "permissions_update_interval_in_ms" : {
+      "type" : "integer"
+    },
+    "roles_validity_in_ms" : {
+      "type" : "integer"
+    },
+    "roles_cache_max_entries" : {
+      "type" : "integer"
+    },
+    "roles_update_interval_in_ms" : {
+      "type" : "integer"
+    },
+    "credentials_validity_in_ms" : {
+      "type" : "integer"
+    },
+    "credentials_cache_max_entries" : {
+      "type" : "integer"
+    },
+    "credentials_update_interval_in_ms" : {
+      "type" : "integer"
+    },
+    "partitioner" : {
+      "type" : [ "string", "null" ]
+    },
+    "auto_bootstrap" : {
+      "type" : "boolean"
+    },
+    "hinted_handoff_enabled" : {
+      "type" : "boolean"
+    },
+    "hinted_handoff_disabled_datacenters" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "max_hint_window_in_ms" : {
+      "type" : "integer"
+    },
+    "hints_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "seed_provider" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ]
+    },
+    "disk_access_mode" : {
+      "type" : "string",
+      "enum" : [ "auto", "mmap", "mmap_index_only", "standard" ]
+    },
+    "disk_failure_policy" : {
+      "type" : "string",
+      "enum" : [ "best_effort", "stop", "ignore", "stop_paranoid", "die" ]
+    },
+    "commit_failure_policy" : {
+      "type" : "string",
+      "enum" : [ "stop", "stop_commit", "ignore", "die" ]
+    },
+    "initial_token" : {
+      "type" : [ "string", "null" ]
+    },
+    "num_tokens" : {
+      "type" : [ "integer", "null" ]
+    },
+    "allocate_tokens_for_keyspace" : {
+      "type" : [ "string", "null" ]
+    },
+    "request_timeout_in_ms" : {
+      "type" : "integer"
+    },
+    "read_request_timeout_in_ms" : {
+      "type" : "integer"
+    },
+    "range_request_timeout_in_ms" : {
+      "type" : "integer"
+    },
+    "write_request_timeout_in_ms" : {
+      "type" : "integer"
+    },
+    "counter_write_request_timeout_in_ms" : {
+      "type" : "integer"
+    },
+    "cas_contention_timeout_in_ms" : {
+      "type" : "integer"
+    },
+    "truncate_request_timeout_in_ms" : {
+      "type" : "integer"
+    },
+    "streaming_socket_timeout_in_ms" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "streaming_keep_alive_period_in_secs" : {
+      "type" : [ "integer", "null" ]
+    },
+    "cross_node_timeout" : {
+      "type" : "boolean"
+    },
+    "slow_query_log_timeout_in_ms" : {
+      "type" : "integer"
+    },
+    "phi_convict_threshold" : {
+      "type" : "number"
+    },
+    "concurrent_reads" : {
+      "type" : "integer"
+    },
+    "concurrent_writes" : {
+      "type" : "integer"
+    },
+    "concurrent_counter_writes" : {
+      "type" : "integer"
+    },
+    "concurrent_materialized_view_writes" : {
+      "type" : "integer"
+    },
+    "concurrent_replicates" : {
+      "type" : [ "integer", "null" ],
+      "deprecated" : true
+    },
+    "memtable_flush_writers" : {
+      "type" : "integer"
+    },
+    "memtable_heap_space_in_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "memtable_offheap_space_in_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "memtable_cleanup_threshold" : {
+      "type" : [ "number", "null" ]
+    },
+    "repair_session_max_tree_depth" : {
+      "type" : "integer"
+    },
+    "storage_port" : {
+      "type" : "integer"
+    },
+    "ssl_storage_port" : {
+      "type" : "integer"
+    },
+    "listen_address" : {
+      "type" : [ "string", "null" ]
+    },
+    "listen_interface" : {
+      "type" : [ "string", "null" ]
+    },
+    "listen_interface_prefer_ipv6" : {
+      "type" : "boolean"
+    },
+    "broadcast_address" : {
+      "type" : [ "string", "null" ]
+    },
+    "listen_on_broadcast_address" : {
+      "type" : "boolean"
+    },
+    "internode_authenticator" : {
+      "type" : [ "string", "null" ]
+    },
+    "start_rpc" : {
+      "type" : "boolean"
+    },
+    "rpc_address" : {
+      "type" : [ "string", "null" ]
+    },
+    "rpc_interface" : {
+      "type" : [ "string", "null" ]
+    },
+    "rpc_interface_prefer_ipv6" : {
+      "type" : "boolean"
+    },
+    "broadcast_rpc_address" : {
+      "type" : [ "string", "null" ]
+    },
+    "rpc_port" : {
+      "type" : "integer"
+    },
+    "rpc_listen_backlog" : {
+      "type" : "integer"
+    },
+    "rpc_server_type" : {
+      "type" : [ "string", "null" ]
+    },
+    "rpc_keepalive" : {
+      "type" : "boolean"
+    },
+    "rpc_min_threads" : {
+      "type" : "integer"
+    },
+    "rpc_max_threads" : {
+      "type" : "integer"
+    },
+    "rpc_send_buff_size_in_bytes" : {
+      "type" : [ "integer", "null" ]
+    },
+    "rpc_recv_buff_size_in_bytes" : {
+      "type" : [ "integer", "null" ]
+    },
+    "internode_send_buff_size_in_bytes" : {
+      "type" : "integer"
+    },
+    "internode_recv_buff_size_in_bytes" : {
+      "type" : "integer"
+    },
+    "start_native_transport" : {
+      "type" : "boolean"
+    },
+    "native_transport_port" : {
+      "type" : "integer"
+    },
+    "native_transport_port_ssl" : {
+      "type" : [ "integer", "null" ]
+    },
+    "native_transport_max_threads" : {
+      "type" : "integer"
+    },
+    "native_transport_max_frame_size_in_mb" : {
+      "type" : "integer"
+    },
+    "native_transport_max_concurrent_connections" : {
+      "type" : "integer"
+    },
+    "native_transport_max_concurrent_connections_per_ip" : {
+      "type" : "integer"
+    },
+    "native_transport_flush_in_batches_legacy" : {
+      "type" : "boolean"
+    },
+    "native_transport_max_concurrent_requests_in_bytes_per_ip" : {
+      "type" : "integer"
+    },
+    "native_transport_max_concurrent_requests_in_bytes" : {
+      "type" : "integer"
+    },
+    "native_transport_max_negotiable_protocol_version" : {
+      "type" : [ "integer", "null" ]
+    },
+    "thrift_max_message_length_in_mb" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "max_value_size_in_mb" : {
+      "type" : "integer"
+    },
+    "thrift_framed_transport_size_in_mb" : {
+      "type" : "integer"
+    },
+    "snapshot_before_compaction" : {
+      "type" : "boolean"
+    },
+    "auto_snapshot" : {
+      "type" : "boolean"
+    },
+    "column_index_size_in_kb" : {
+      "type" : "integer"
+    },
+    "column_index_cache_size_in_kb" : {
+      "type" : "integer"
+    },
+    "batch_size_warn_threshold_in_kb" : {
+      "type" : "integer"
+    },
+    "batch_size_fail_threshold_in_kb" : {
+      "type" : "integer"
+    },
+    "unlogged_batch_across_partitions_warn_threshold" : {
+      "type" : [ "integer", "null" ]
+    },
+    "concurrent_compactors" : {
+      "type" : [ "integer", "null" ]
+    },
+    "compaction_throughput_mb_per_sec" : {
+      "type" : "integer"
+    },
+    "compaction_large_partition_warning_threshold_mb" : {
+      "type" : "integer"
+    },
+    "min_free_space_per_drive_in_mb" : {
+      "type" : "integer"
+    },
+    "max_streaming_retries" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "stream_throughput_outbound_megabits_per_sec" : {
+      "type" : "integer"
+    },
+    "inter_dc_stream_throughput_outbound_megabits_per_sec" : {
+      "type" : "integer"
+    },
+    "data_file_directories" : {
+      "type" : "array",
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "saved_caches_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "commitlog_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "commitlog_total_space_in_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "commitlog_sync" : {
+      "type" : "string",
+      "enum" : [ "periodic", "batch" ]
+    },
+    "commitlog_sync_batch_window_in_ms" : {
+      "type" : "number"
+    },
+    "commitlog_sync_period_in_ms" : {
+      "type" : "integer"
+    },
+    "commitlog_segment_size_in_mb" : {
+      "type" : "integer"
+    },
+    "commitlog_compression" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ]
+    },
+    "commitlog_max_compression_buffers_in_pool" : {
+      "type" : "integer"
+    },
+    "transparent_data_encryption_options" : {
+      "$ref" : "#/$defs/TransparentDataEncryptionOptions"
+    },
+    "max_mutation_size_in_kb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "cdc_enabled" : {
+      "type" : "boolean"
+    },
+    "cdc_raw_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "cdc_total_space_in_mb" : {
+      "type" : "integer"
+    },
+    "cdc_free_space_check_interval_ms" : {
+      "type" : "integer"
+    },
+    "commitlog_periodic_queue_size" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "endpoint_snitch" : {
+      "type" : [ "string", "null" ]
+    },
+    "dynamic_snitch" : {
+      "type" : "boolean"
+    },
+    "dynamic_snitch_update_interval_in_ms" : {
+      "type" : "integer"
+    },
+    "dynamic_snitch_reset_interval_in_ms" : {
+      "type" : "integer"
+    },
+    "dynamic_snitch_badness_threshold" : {
+      "type" : "number"
+    },
+    "request_scheduler" : {
+      "type" : [ "string", "null" ]
+    },
+    "request_scheduler_id" : {
+      "type" : "string",
+      "enum" : [ "keyspace" ]
+    },
+    "request_scheduler_options" : {
+      "$ref" : "#/$defs/RequestSchedulerOptions"
+    },
+    "server_encryption_options" : {
+      "$ref" : "#/$defs/EncryptionOptions_ServerEncryptionOptions"
+    },
+    "client_encryption_options" : {
+      "$ref" : "#/$defs/EncryptionOptions_ClientEncryptionOptions"
+    },
+    "encryption_options" : {
+      "$ref" : "#/$defs/EncryptionOptions_ServerEncryptionOptions"
+    },
+    "internode_compression" : {
+      "type" : "string",
+      "enum" : [ "all", "none", "dc" ]
+    },
+    "index_interval" : {
+      "type" : [ "integer", "null" ],
+      "deprecated" : true
+    },
+    "hinted_handoff_throttle_in_kb" : {
+      "type" : "integer"
+    },
+    "batchlog_replay_throttle_in_kb" : {
+      "type" : "integer"
+    },
+    "max_hints_delivery_threads" : {
+      "type" : "integer"
+    },
+    "hints_flush_period_in_ms" : {
+      "type" : "integer"
+    },
+    "max_hints_file_size_in_mb" : {
+      "type" : "integer"
+    },
+    "hints_compression" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ]
+    },
+    "sstable_preemptive_open_interval_in_mb" : {
+      "type" : "integer"
+    },
+    "incremental_backups" : {
+      "type" : "boolean"
+    },
+    "trickle_fsync" : {
+      "type" : "boolean"
+    },
+    "trickle_fsync_interval_in_kb" : {
+      "type" : "integer"
+    },
+    "key_cache_size_in_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "key_cache_save_period" : {
+      "type" : "integer"
+    },
+    "key_cache_keys_to_save" : {
+      "type" : "integer"
+    },
+    "row_cache_class_name" : {
+      "type" : [ "string", "null" ]
+    },
+    "row_cache_size_in_mb" : {
+      "type" : "integer"
+    },
+    "row_cache_save_period" : {
+      "type" : "integer"
+    },
+    "row_cache_keys_to_save" : {
+      "type" : "integer"
+    },
+    "counter_cache_size_in_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "counter_cache_save_period" : {
+      "type" : "integer"
+    },
+    "counter_cache_keys_to_save" : {
+      "type" : "integer"
+    },
+    "cache_load_timeout_seconds" : {
+      "type" : "integer"
+    },
+    "file_cache_size_in_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "file_cache_round_up" : {
+      "type" : [ "boolean", "null" ]
+    },
+    "buffer_pool_use_heap_if_exhausted" : {
+      "type" : "boolean"
+    },
+    "disk_optimization_strategy" : {
+      "type" : "string",
+      "enum" : [ "ssd", "spinning" ]
+    },
+    "disk_optimization_estimate_percentile" : {
+      "type" : "number"
+    },
+    "disk_optimization_page_cross_chance" : {
+      "type" : "number"
+    },
+    "inter_dc_tcp_nodelay" : {
+      "type" : "boolean"
+    },
+    "memtable_allocation_type" : {
+      "type" : "string",
+      "enum" : [ "unslabbed_heap_buffers", "heap_buffers", "offheap_buffers", "offheap_objects" ]
+    },
+    "tombstone_warn_threshold" : {
+      "type" : "integer"
+    },
+    "tombstone_failure_threshold" : {
+      "type" : "integer"
+    },
+    "replica_filtering_protection" : {
+      "$ref" : "#/$defs/ReplicaFilteringProtectionOptions"
+    },
+    "index_summary_capacity_in_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "index_summary_resize_interval_in_minutes" : {
+      "type" : "integer"
+    },
+    "gc_log_threshold_in_ms" : {
+      "type" : "integer"
+    },
+    "gc_warn_threshold_in_ms" : {
+      "type" : "integer"
+    },
+    "tracetype_query_ttl" : {
+      "type" : "integer"
+    },
+    "tracetype_repair_ttl" : {
+      "type" : "integer"
+    },
+    "otc_coalescing_strategy" : {
+      "type" : [ "string", "null" ]
+    },
+    "otc_coalescing_window_us" : {
+      "type" : "integer"
+    },
+    "otc_coalescing_enough_coalesced_messages" : {
+      "type" : "integer"
+    },
+    "otc_backlog_expiration_interval_ms" : {
+      "type" : "integer"
+    },
+    "windows_timer_interval" : {
+      "type" : "integer"
+    },
+    "prepared_statements_cache_size_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "thrift_prepared_statements_cache_size_mb" : {
+      "type" : [ "integer", "null" ]
+    },
+    "enable_user_defined_functions" : {
+      "type" : "boolean"
+    },
+    "enable_scripted_user_defined_functions" : {
+      "type" : "boolean"
+    },
+    "enable_materialized_views" : {
+      "type" : "boolean"
+    },
+    "enable_sasi_indexes" : {
+      "type" : "boolean"
+    },
+    "enable_drop_compact_storage" : {
+      "type" : "boolean"
+    },
+    "enable_user_defined_functions_threads" : {
+      "type" : "boolean"
+    },
+    "allow_insecure_udfs" : {
+      "type" : "boolean"
+    },
+    "allow_extra_insecure_udfs" : {
+      "type" : "boolean"
+    },
+    "user_defined_function_warn_timeout" : {
+      "type" : "integer"
+    },
+    "user_defined_function_fail_timeout" : {
+      "type" : "integer"
+    },
+    "user_function_timeout_policy" : {
+      "type" : "string",
+      "enum" : [ "ignore", "die", "die_immediate" ]
+    },
+    "back_pressure_enabled" : {
+      "type" : "boolean"
+    },
+    "back_pressure_strategy" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ]
+    },
+    "snapshot_on_duplicate_row_detection" : {
+      "type" : "boolean"
+    },
+    "check_for_duplicate_rows_during_reads" : {
+      "type" : "boolean"
+    },
+    "check_for_duplicate_rows_during_compaction" : {
+      "type" : "boolean"
+    },
+    "force_new_prepared_statement_behaviour" : {
+      "type" : "boolean"
+    }
+  },
+  "additionalProperties" : false,
+  "$defs" : {
+    "EncryptionOptions_ServerEncryptionOptions" : {
+      "type" : "object",
+      "properties" : {
+        "internode_encryption" : {
+          "type" : "string",
+          "enum" : [ "all", "none", "dc", "rack" ]
+        },
+        "keystore" : {
+          "type" : [ "string", "null" ]
+        },
+        "keystore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "cipher_suites" : {
+          "type" : "array",
+          "items" : {
+            "type" : [ "string", "null" ]
+          }
+        },
+        "protocol" : {
+          "type" : [ "string", "null" ]
+        },
+        "algorithm" : {
+          "type" : [ "string", "null" ]
+        },
+        "store_type" : {
+          "type" : [ "string", "null" ]
+        },
+        "require_client_auth" : {
+          "type" : "boolean"
+        },
+        "require_endpoint_verification" : {
+          "type" : "boolean"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "RequestSchedulerOptions" : {
+      "type" : "object",
+      "properties" : {
+        "throttle_limit" : {
+          "type" : [ "integer", "null" ]
+        },
+        "default_weight" : {
+          "type" : [ "integer", "null" ]
+        },
+        "weights" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : [ "integer", "null" ]
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "EncryptionOptions_ClientEncryptionOptions" : {
+      "type" : "object",
+      "properties" : {
+        "enabled" : {
+          "type" : "boolean"
+        },
+        "optional" : {
+          "type" : "boolean"
+        },
+        "keystore" : {
+          "type" : [ "string", "null" ]
+        },
+        "keystore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "cipher_suites" : {
+          "type" : "array",
+          "items" : {
+            "type" : [ "string", "null" ]
+          }
+        },
+        "protocol" : {
+          "type" : [ "string", "null" ]
+        },
+        "algorithm" : {
+          "type" : [ "string", "null" ]
+        },
+        "store_type" : {
+          "type" : [ "string", "null" ]
+        },
+        "require_client_auth" : {
+          "type" : "boolean"
+        },
+        "require_endpoint_verification" : {
+          "type" : "boolean"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "ReplicaFilteringProtectionOptions" : {
+      "type" : "object",
+      "properties" : {
+        "cached_rows_warn_threshold" : {
+          "type" : "integer"
+        },
+        "cached_rows_fail_threshold" : {
+          "type" : "integer"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "TransparentDataEncryptionOptions" : {
+      "type" : "object",
+      "properties" : {
+        "enabled" : {
+          "type" : "boolean"
+        },
+        "chunk_length_kb" : {
+          "type" : "integer"
+        },
+        "cipher" : {
+          "type" : [ "string", "null" ]
+        },
+        "key_alias" : {
+          "type" : [ "string", "null" ]
+        },
+        "iv_length" : {
+          "type" : "integer"
+        },
+        "key_provider" : {
+          "description" : "Pluggable class with optional parameters.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "object",
+            "properties" : {
+              "class_name" : {
+                "type" : "string",
+                "description" : "Fully qualified class name"
+              },
+              "parameters" : {
+                "description" : "Key-value parameters for the class",
+                "oneOf" : [ {
+                  "type" : "object",
+                  "additionalProperties" : true
+                }, {
+                  "type" : "array",
+                  "items" : {
+                    "type" : [ "object", "null" ],
+                    "additionalProperties" : true
+                  }
+                }, {
+                  "type" : "null"
+                } ]
+              }
+            },
+            "required" : [ "class_name" ],
+            "additionalProperties" : false
+          }, {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "class_name" : {
+                  "type" : "string",
+                  "description" : "Fully qualified class name"
+                },
+                "parameters" : {
+                  "description" : "Key-value parameters for the class",
+                  "oneOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : true
+                  }, {
+                    "type" : "array",
+                    "items" : {
+                      "type" : [ "object", "null" ],
+                      "additionalProperties" : true
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                }
+              },
+              "required" : [ "class_name" ],
+              "additionalProperties" : false
+            }
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    }
+  }
+}

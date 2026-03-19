@@ -1,0 +1,78 @@
+#!/bin/bash
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.
+
+if [ $# -ne 2 ]; then
+    echo "Usage: bin/generate-schema-from-source <version> <output.json>" >&2
+    echo "" >&2
+    echo "Clones the Cassandra source for the given version, builds the JAR," >&2
+    echo "and generates a JSON Schema from it." >&2
+    echo "" >&2
+    echo "Arguments:" >&2
+    echo "  version      Cassandra version (e.g., 3.11.19, 4.1.10, 5.0.6) or branch name (e.g., trunk)" >&2
+    echo "  output.json  Path to write the generated JSON Schema" >&2
+    echo "" >&2
+    echo "Examples:" >&2
+    echo "  bin/generate-schema-from-source 5.0.6 target/schema-5.0.json" >&2
+    echo "  bin/generate-schema-from-source trunk target/schema-trunk.json" >&2
+    exit 1
+fi
+
+set -e
+
+VERSION="$1"
+OUTPUT="$2"
+REPO_URL="https://github.com/apache/cassandra.git"
+
+# Determine the git ref: version numbers get the cassandra- prefix, branch names are used as-is
+if echo "$VERSION" | grep -qE '^[0-9]'; then
+    GIT_REF="cassandra-${VERSION}"
+else
+    GIT_REF="$VERSION"
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Resolve output to absolute path before changing dirs
+case "$OUTPUT" in
+    /*) ;;
+    *) OUTPUT="$(pwd)/$OUTPUT" ;;
+esac
+
+# Select JAVA_HOME based on major version (java8 for 3.x, java11 for 4.x and later)
+if echo "$VERSION" | grep -qE '^3\.'; then
+    BUILD_JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+else
+    BUILD_JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+fi
+
+if [ ! -d "$BUILD_JAVA_HOME" ]; then
+    echo "Error: Required JDK not found at $BUILD_JAVA_HOME" >&2
+    exit 1
+fi
+
+# Ensure the schema generator is built
+if [ ! -d "$PROJECT_DIR/target/lib" ] || [ -z "$(ls "$PROJECT_DIR"/target/lib/*.jar 2>/dev/null)" ]; then
+    echo "Building cassandra-jsonschema ..."
+    (cd "$PROJECT_DIR" && mvn package -DskipTests -q)
+fi
+
+TMPDIR="$(mktemp -d)"
+trap 'rm -rf "$TMPDIR"' EXIT
+
+echo "Cloning cassandra $GIT_REF into $TMPDIR ..."
+git clone --depth 1 --branch "$GIT_REF" "$REPO_URL" "$TMPDIR/cassandra"
+
+echo "Building with ant jar (JAVA_HOME=$BUILD_JAVA_HOME) ..."
+(cd "$TMPDIR/cassandra" && JAVA_HOME="$BUILD_JAVA_HOME" ant jar)
+
+# Find the built JAR
+JAR="$(ls "$TMPDIR"/cassandra/build/apache-cassandra-*.jar 2>/dev/null | head -1)"
+if [ -z "$JAR" ]; then
+    echo "Error: No JAR found in $TMPDIR/cassandra/build/" >&2
+    exit 1
+fi
+
+echo "Generating schema from $JAR ..."
+"$SCRIPT_DIR/generate-schema" "$JAR" "$OUTPUT"

@@ -1,0 +1,5258 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "title" : "Apache Cassandra Configuration",
+  "type" : "object",
+  "properties" : {
+    "cluster_name" : {
+      "type" : [ "string", "null" ]
+    },
+    "authenticator" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      } ]
+    },
+    "authorizer" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      } ]
+    },
+    "role_manager" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      } ]
+    },
+    "crypto_provider" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ]
+    },
+    "network_authorizer" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      } ]
+    },
+    "cidr_authorizer" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      } ]
+    },
+    "permissions_validity" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "permissions_validity_in_ms" : {
+      "description" : "Deprecated. Use 'permissions_validity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "permissions_cache_max_entries" : {
+      "type" : "integer"
+    },
+    "permissions_update_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "permissions_update_interval_in_ms" : {
+      "description" : "Deprecated. Use 'permissions_update_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "permissions_cache_active_update" : {
+      "type" : "boolean"
+    },
+    "roles_validity" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "roles_validity_in_ms" : {
+      "description" : "Deprecated. Use 'roles_validity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "roles_cache_max_entries" : {
+      "type" : "integer"
+    },
+    "roles_update_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "roles_update_interval_in_ms" : {
+      "description" : "Deprecated. Use 'roles_update_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "roles_cache_active_update" : {
+      "type" : "boolean"
+    },
+    "credentials_validity" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "credentials_validity_in_ms" : {
+      "description" : "Deprecated. Use 'credentials_validity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "credentials_cache_max_entries" : {
+      "type" : "integer"
+    },
+    "credentials_update_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "credentials_update_interval_in_ms" : {
+      "description" : "Deprecated. Use 'credentials_update_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "credentials_cache_active_update" : {
+      "type" : "boolean"
+    },
+    "max_comment_length" : {
+      "type" : "integer"
+    },
+    "max_security_label_length" : {
+      "type" : "integer"
+    },
+    "partitioner" : {
+      "type" : [ "string", "null" ]
+    },
+    "auto_bootstrap" : {
+      "type" : "boolean"
+    },
+    "hinted_handoff_enabled" : {
+      "type" : "boolean"
+    },
+    "hinted_handoff_disabled_datacenters" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "max_hint_window" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "max_hint_window_in_ms" : {
+      "description" : "Deprecated. Use 'max_hint_window' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "hints_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "hint_window_persistent_enabled" : {
+      "type" : "boolean"
+    },
+    "force_new_prepared_statement_behaviour" : {
+      "type" : "boolean"
+    },
+    "seed_provider" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ]
+    },
+    "disk_access_mode" : {
+      "type" : "string",
+      "enum" : [ "auto", "mmap", "mmap_index_only", "standard", "legacy", "direct" ]
+    },
+    "disk_failure_policy" : {
+      "type" : "string",
+      "enum" : [ "best_effort", "stop", "ignore", "stop_paranoid", "die" ]
+    },
+    "commit_failure_policy" : {
+      "type" : "string",
+      "enum" : [ "stop", "stop_commit", "ignore", "die" ]
+    },
+    "use_deterministic_table_id" : {
+      "type" : "boolean",
+      "deprecated" : true
+    },
+    "initial_token" : {
+      "type" : [ "string", "null" ]
+    },
+    "num_tokens" : {
+      "type" : [ "integer", "null" ]
+    },
+    "allocate_tokens_for_keyspace" : {
+      "type" : [ "string", "null" ]
+    },
+    "allocate_tokens_for_local_replication_factor" : {
+      "type" : [ "integer", "null" ]
+    },
+    "native_transport_idle_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "native_transport_idle_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'native_transport_idle_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "request_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "request_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'request_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "read_request_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "read_request_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'read_request_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "range_request_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "range_request_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'range_request_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "write_request_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "write_request_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'write_request_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "short_rpc_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "counter_write_request_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "counter_write_request_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'counter_write_request_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "cas_contention_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "cas_contention_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'cas_contention_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "accord_preaccept_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "truncate_request_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "truncate_request_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'truncate_request_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "repair_request_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "repair_request_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'repair_request_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "streaming_connections_per_host" : {
+      "type" : [ "integer", "null" ]
+    },
+    "streaming_keep_alive_period" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "streaming_keep_alive_period_in_secs" : {
+      "description" : "Deprecated. Use 'streaming_keep_alive_period' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_timeout" : {
+      "type" : "boolean"
+    },
+    "cross_node_timeout" : {
+      "type" : "boolean",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'internode_timeout' instead."
+    },
+    "slow_query_log_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "slow_query_log_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'slow_query_log_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "stream_transfer_task_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "cms_await_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "cms_default_max_retries" : {
+      "type" : "integer"
+    },
+    "cms_default_retry_backoff" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "cms_default_max_retry_backoff" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "cms_retry_delay" : {
+      "type" : [ "string", "null" ]
+    },
+    "epoch_aware_debounce_inflight_tracker_max_size" : {
+      "type" : "integer"
+    },
+    "metadata_snapshot_frequency" : {
+      "type" : "integer"
+    },
+    "phi_convict_threshold" : {
+      "type" : "number"
+    },
+    "concurrent_reads" : {
+      "type" : "integer"
+    },
+    "concurrent_writes" : {
+      "type" : "integer"
+    },
+    "concurrent_accord_operations" : {
+      "type" : "integer"
+    },
+    "concurrent_counter_writes" : {
+      "type" : "integer"
+    },
+    "concurrent_materialized_view_writes" : {
+      "type" : "integer"
+    },
+    "available_processors" : {
+      "type" : [ "integer", "null" ]
+    },
+    "memtable_flush_writers" : {
+      "type" : "integer"
+    },
+    "memtable_heap_space" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "memtable_heap_space_in_mb" : {
+      "description" : "Deprecated. Use 'memtable_heap_space' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "memtable_offheap_space" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "memtable_offheap_space_in_mb" : {
+      "description" : "Deprecated. Use 'memtable_offheap_space' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "memtable_cleanup_threshold" : {
+      "type" : [ "number", "null" ]
+    },
+    "memtable" : {
+      "$ref" : "#/$defs/Config_MemtableOptions"
+    },
+    "repair_session_max_tree_depth" : {
+      "type" : [ "integer", "null" ],
+      "deprecated" : true
+    },
+    "repair_session_space" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "repair_session_space_in_mb" : {
+      "description" : "Deprecated. Use 'repair_session_space' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "concurrent_merkle_tree_requests" : {
+      "type" : "integer"
+    },
+    "use_offheap_merkle_trees" : {
+      "type" : "boolean"
+    },
+    "storage_port" : {
+      "type" : "integer"
+    },
+    "ssl_storage_port" : {
+      "type" : "integer"
+    },
+    "listen_address" : {
+      "type" : [ "string", "null" ]
+    },
+    "listen_interface" : {
+      "type" : [ "string", "null" ]
+    },
+    "listen_interface_prefer_ipv6" : {
+      "type" : "boolean"
+    },
+    "broadcast_address" : {
+      "type" : [ "string", "null" ]
+    },
+    "listen_on_broadcast_address" : {
+      "type" : "boolean"
+    },
+    "internode_authenticator" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      } ]
+    },
+    "traverse_auth_from_root" : {
+      "type" : "boolean"
+    },
+    "rpc_address" : {
+      "type" : [ "string", "null" ]
+    },
+    "rpc_interface" : {
+      "type" : [ "string", "null" ]
+    },
+    "rpc_interface_prefer_ipv6" : {
+      "type" : "boolean"
+    },
+    "broadcast_rpc_address" : {
+      "type" : [ "string", "null" ]
+    },
+    "rpc_keepalive" : {
+      "type" : "boolean"
+    },
+    "internode_max_message_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_max_message_size_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_max_message_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_socket_send_buffer_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_socket_send_buffer_size_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_socket_send_buffer_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_send_buff_size_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_socket_send_buffer_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_socket_receive_buffer_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_socket_receive_buffer_size_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_socket_receive_buffer_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_recv_buff_size_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_socket_receive_buffer_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_application_send_queue_capacity" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_application_send_queue_capacity_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_application_send_queue_capacity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_application_send_queue_reserve_endpoint_capacity" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_application_send_queue_reserve_endpoint_capacity_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_application_send_queue_reserve_endpoint_capacity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_application_send_queue_reserve_global_capacity" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_application_send_queue_reserve_global_capacity_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_application_send_queue_reserve_global_capacity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_application_receive_queue_capacity" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_application_receive_queue_capacity_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_application_receive_queue_capacity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_application_receive_queue_reserve_endpoint_capacity" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_application_receive_queue_reserve_endpoint_capacity_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_application_receive_queue_reserve_endpoint_capacity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_application_receive_queue_reserve_global_capacity" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_application_receive_queue_reserve_global_capacity_in_bytes" : {
+      "description" : "Deprecated. Use 'internode_application_receive_queue_reserve_global_capacity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_tcp_connect_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_tcp_connect_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'internode_tcp_connect_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_tcp_user_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_tcp_user_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'internode_tcp_user_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "internode_streaming_tcp_user_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "internode_streaming_tcp_user_timeout_in_ms" : {
+      "description" : "Deprecated. Use 'internode_streaming_tcp_user_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "start_native_transport" : {
+      "type" : "boolean"
+    },
+    "native_transport_port" : {
+      "type" : "integer"
+    },
+    "native_transport_max_threads" : {
+      "type" : "integer"
+    },
+    "native_transport_max_frame_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "native_transport_max_frame_size_in_mb" : {
+      "description" : "Deprecated. Use 'native_transport_max_frame_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "native_transport_max_auth_threads" : {
+      "type" : "integer"
+    },
+    "native_transport_max_message_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "native_transport_max_concurrent_connections" : {
+      "type" : "integer"
+    },
+    "native_transport_max_concurrent_connections_per_ip" : {
+      "type" : "integer"
+    },
+    "native_transport_flush_in_batches_legacy" : {
+      "type" : "boolean"
+    },
+    "native_transport_allow_older_protocols" : {
+      "type" : "boolean"
+    },
+    "native_transport_max_request_data_in_flight_per_ip" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "native_transport_max_concurrent_requests_in_bytes_per_ip" : {
+      "description" : "Deprecated. Use 'native_transport_max_request_data_in_flight_per_ip' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "native_transport_max_request_data_in_flight" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "native_transport_max_concurrent_requests_in_bytes" : {
+      "description" : "Deprecated. Use 'native_transport_max_request_data_in_flight' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "native_transport_rate_limiting_enabled" : {
+      "type" : "boolean"
+    },
+    "native_transport_max_requests_per_second" : {
+      "type" : "integer"
+    },
+    "native_transport_receive_queue_capacity" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "native_transport_receive_queue_capacity_in_bytes" : {
+      "description" : "Deprecated. Use 'native_transport_receive_queue_capacity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "max_value_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "max_value_size_in_mb" : {
+      "description" : "Deprecated. Use 'max_value_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "snapshot_before_compaction" : {
+      "type" : "boolean"
+    },
+    "auto_snapshot" : {
+      "type" : "boolean"
+    },
+    "auto_snapshot_ttl" : {
+      "type" : [ "string", "null" ]
+    },
+    "snapshot_links_per_second" : {
+      "type" : "integer"
+    },
+    "column_index_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_index_size_in_kb" : {
+      "description" : "Deprecated. Use 'column_index_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "column_index_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_index_cache_size_in_kb" : {
+      "description" : "Deprecated. Use 'column_index_cache_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "batch_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "batch_size_warn_threshold_in_kb" : {
+      "description" : "Deprecated. Use 'batch_size_warn_threshold' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "batch_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "batch_size_fail_threshold_in_kb" : {
+      "description" : "Deprecated. Use 'batch_size_fail_threshold' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "unlogged_batch_across_partitions_warn_threshold" : {
+      "type" : [ "integer", "null" ]
+    },
+    "concurrent_compactors" : {
+      "type" : [ "integer", "null" ]
+    },
+    "compaction_throughput" : {
+      "description" : "Data rate value. Accepts a string (e.g., '64MiB/s', '1000B/s') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "compaction_throughput_mb_per_sec" : {
+      "description" : "Deprecated. Use 'compaction_throughput' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "min_free_space_per_drive" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "min_free_space_per_drive_in_mb" : {
+      "description" : "Deprecated. Use 'min_free_space_per_drive' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "compressed_read_ahead_buffer_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "max_space_usable_for_compactions_in_percentage" : {
+      "type" : [ "number", "null" ]
+    },
+    "concurrent_materialized_view_builders" : {
+      "type" : "integer"
+    },
+    "reject_repair_compaction_threshold" : {
+      "type" : "integer"
+    },
+    "concurrent_index_builders" : {
+      "type" : "integer"
+    },
+    "repair_disk_headroom_reject_ratio" : {
+      "type" : "number"
+    },
+    "incremental_repair_disk_headroom_reject_ratio" : {
+      "type" : "number",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'repair_disk_headroom_reject_ratio' instead."
+    },
+    "max_streaming_retries" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "stream_throughput_outbound" : {
+      "description" : "Data rate value. Accepts a string (e.g., '64MiB/s', '1000B/s') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "stream_throughput_outbound_megabits_per_sec" : {
+      "description" : "Deprecated. Use 'stream_throughput_outbound' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "inter_dc_stream_throughput_outbound" : {
+      "description" : "Data rate value. Accepts a string (e.g., '64MiB/s', '1000B/s') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "inter_dc_stream_throughput_outbound_megabits_per_sec" : {
+      "description" : "Deprecated. Use 'inter_dc_stream_throughput_outbound' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "entire_sstable_stream_throughput_outbound" : {
+      "description" : "Data rate value. Accepts a string (e.g., '64MiB/s', '1000B/s') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "entire_sstable_inter_dc_stream_throughput_outbound" : {
+      "description" : "Data rate value. Accepts a string (e.g., '64MiB/s', '1000B/s') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "data_file_directories" : {
+      "type" : "array",
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "sstable" : {
+      "$ref" : "#/$defs/Config_SSTableConfig"
+    },
+    "local_system_data_file_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "saved_caches_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "commitlog_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "commitlog_total_space" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "commitlog_total_space_in_mb" : {
+      "description" : "Deprecated. Use 'commitlog_total_space' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "commitlog_sync" : {
+      "type" : "string",
+      "enum" : [ "periodic", "batch", "group" ]
+    },
+    "commitlog_sync_group_window" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "commitlog_sync_group_window_in_ms" : {
+      "description" : "Deprecated. Use 'commitlog_sync_group_window' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "commitlog_sync_period" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "commitlog_sync_period_in_ms" : {
+      "description" : "Deprecated. Use 'commitlog_sync_period' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "commitlog_segment_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "commitlog_segment_size_in_mb" : {
+      "description" : "Deprecated. Use 'commitlog_segment_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "commitlog_compression" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ]
+    },
+    "flush_compression" : {
+      "type" : "string",
+      "enum" : [ "none", "fast", "table" ]
+    },
+    "commitlog_max_compression_buffers_in_pool" : {
+      "type" : "integer"
+    },
+    "commitlog_disk_access_mode" : {
+      "type" : "string",
+      "enum" : [ "auto", "mmap", "mmap_index_only", "standard", "legacy", "direct" ]
+    },
+    "compaction_read_disk_access_mode" : {
+      "type" : "string",
+      "enum" : [ "auto", "mmap", "mmap_index_only", "standard", "legacy", "direct" ]
+    },
+    "periodic_commitlog_sync_lag_block" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "periodic_commitlog_sync_lag_block_in_ms" : {
+      "description" : "Deprecated. Use 'periodic_commitlog_sync_lag_block' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "transparent_data_encryption_options" : {
+      "$ref" : "#/$defs/TransparentDataEncryptionOptions"
+    },
+    "max_mutation_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "max_mutation_size_in_kb" : {
+      "description" : "Deprecated. Use 'max_mutation_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "cdc_enabled" : {
+      "type" : "boolean"
+    },
+    "cdc_block_writes" : {
+      "type" : "boolean"
+    },
+    "cdc_on_repair_enabled" : {
+      "type" : "boolean"
+    },
+    "cdc_raw_directory" : {
+      "type" : [ "string", "null" ]
+    },
+    "cdc_total_space" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "cdc_total_space_in_mb" : {
+      "description" : "Deprecated. Use 'cdc_total_space' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "cdc_free_space_check_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "cdc_free_space_check_interval_ms" : {
+      "description" : "Deprecated. Use 'cdc_free_space_check_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "endpoint_snitch" : {
+      "type" : [ "string", "null" ]
+    },
+    "dynamic_snitch" : {
+      "type" : "boolean"
+    },
+    "dynamic_snitch_update_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "dynamic_snitch_update_interval_in_ms" : {
+      "description" : "Deprecated. Use 'dynamic_snitch_update_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "dynamic_snitch_reset_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "dynamic_snitch_reset_interval_in_ms" : {
+      "description" : "Deprecated. Use 'dynamic_snitch_reset_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "dynamic_snitch_badness_threshold" : {
+      "type" : "number"
+    },
+    "node_proximity" : {
+      "type" : [ "string", "null" ]
+    },
+    "initial_location_provider" : {
+      "type" : [ "string", "null" ]
+    },
+    "addresses_config" : {
+      "type" : [ "string", "null" ]
+    },
+    "prefer_local_connections" : {
+      "type" : "boolean"
+    },
+    "failure_detector" : {
+      "type" : [ "string", "null" ]
+    },
+    "server_encryption_options" : {
+      "$ref" : "#/$defs/EncryptionOptions_ServerEncryptionOptions"
+    },
+    "client_encryption_options" : {
+      "$ref" : "#/$defs/EncryptionOptions_ClientEncryptionOptions"
+    },
+    "jmx_server_options" : {
+      "$ref" : "#/$defs/JMXServerOptions"
+    },
+    "internode_compression" : {
+      "type" : "string",
+      "enum" : [ "all", "none", "dc" ]
+    },
+    "hinted_handoff_throttle" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "hinted_handoff_throttle_in_kb" : {
+      "description" : "Deprecated. Use 'hinted_handoff_throttle' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "batchlog_replay_throttle" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "batchlog_replay_throttle_in_kb" : {
+      "description" : "Deprecated. Use 'batchlog_replay_throttle' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "batchlog_endpoint_strategy" : {
+      "type" : "string",
+      "enum" : [ "random_remote", "prefer_local", "dynamic_remote", "dynamic" ]
+    },
+    "max_hints_delivery_threads" : {
+      "type" : "integer"
+    },
+    "hints_flush_period" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "hints_flush_period_in_ms" : {
+      "description" : "Deprecated. Use 'hints_flush_period' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "max_hints_file_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "max_hints_file_size_in_mb" : {
+      "description" : "Deprecated. Use 'max_hints_file_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "max_hints_size_per_host" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "hints_compression" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ]
+    },
+    "auto_hints_cleanup_enabled" : {
+      "type" : "boolean"
+    },
+    "transfer_hints_on_decommission" : {
+      "type" : "boolean"
+    },
+    "use_creation_time_for_hint_ttl" : {
+      "type" : "boolean"
+    },
+    "incremental_backups" : {
+      "type" : "boolean"
+    },
+    "trickle_fsync" : {
+      "type" : "boolean"
+    },
+    "trickle_fsync_interval" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "trickle_fsync_interval_in_kb" : {
+      "description" : "Deprecated. Use 'trickle_fsync_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "sstable_preemptive_open_interval" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "sstable_preemptive_open_interval_in_mb" : {
+      "description" : "Deprecated. Use 'sstable_preemptive_open_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "key_cache_migrate_during_compaction" : {
+      "type" : "boolean"
+    },
+    "key_cache_invalidate_after_sstable_deletion" : {
+      "type" : "boolean"
+    },
+    "key_cache_keys_to_save" : {
+      "type" : "integer"
+    },
+    "key_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "key_cache_size_in_mb" : {
+      "description" : "Deprecated. Use 'key_cache_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "key_cache_save_period" : {
+      "description" : "Deprecated. Use 'key_cache_save_period' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "row_cache_class_name" : {
+      "type" : [ "string", "null" ]
+    },
+    "row_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "row_cache_size_in_mb" : {
+      "description" : "Deprecated. Use 'row_cache_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "row_cache_save_period" : {
+      "description" : "Deprecated. Use 'row_cache_save_period' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "row_cache_keys_to_save" : {
+      "type" : "integer"
+    },
+    "counter_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "counter_cache_size_in_mb" : {
+      "description" : "Deprecated. Use 'counter_cache_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "counter_cache_save_period" : {
+      "description" : "Deprecated. Use 'counter_cache_save_period' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "counter_cache_keys_to_save" : {
+      "type" : "integer"
+    },
+    "compression_dictionary_refresh_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "compression_dictionary_refresh_initial_delay" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "compression_dictionary_cache_size" : {
+      "type" : "integer"
+    },
+    "compression_dictionary_cache_expire" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "paxos_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "consensus_migration_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "cache_load_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "cache_load_timeout_seconds" : {
+      "description" : "Deprecated. Use 'cache_load_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "networking_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "networking_cache_size_in_mb" : {
+      "description" : "Deprecated. Use 'networking_cache_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "file_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "file_cache_size_in_mb" : {
+      "description" : "Deprecated. Use 'file_cache_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "file_cache_enabled" : {
+      "type" : "boolean"
+    },
+    "file_cache_round_up" : {
+      "type" : [ "boolean", "null" ]
+    },
+    "buffer_pool_use_heap_if_exhausted" : {
+      "type" : "boolean",
+      "deprecated" : true
+    },
+    "disk_optimization_strategy" : {
+      "type" : "string",
+      "enum" : [ "ssd", "spinning" ]
+    },
+    "disk_optimization_estimate_percentile" : {
+      "type" : "number"
+    },
+    "disk_optimization_page_cross_chance" : {
+      "type" : "number"
+    },
+    "inter_dc_tcp_nodelay" : {
+      "type" : "boolean"
+    },
+    "memtable_allocation_type" : {
+      "type" : "string",
+      "enum" : [ "unslabbed_heap_buffers", "unslabbed_heap_buffers_logged", "heap_buffers", "offheap_buffers", "offheap_objects" ]
+    },
+    "read_thresholds_enabled" : {
+      "type" : "boolean"
+    },
+    "coordinator_read_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "coordinator_read_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "local_read_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "local_read_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "row_index_read_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "row_index_read_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "sstables_per_read_log_threshold" : {
+      "type" : "integer"
+    },
+    "tombstone_warn_threshold" : {
+      "type" : "integer"
+    },
+    "tombstone_failure_threshold" : {
+      "type" : "integer"
+    },
+    "write_thresholds_enabled" : {
+      "type" : "boolean"
+    },
+    "write_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "coordinator_write_warn_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "write_tombstone_warn_threshold" : {
+      "type" : "integer"
+    },
+    "tombstone_read_purgeable_metric_granularity" : {
+      "type" : "string",
+      "enum" : [ "disabled", "row", "cell" ]
+    },
+    "replica_filtering_protection" : {
+      "$ref" : "#/$defs/ReplicaFilteringProtectionOptions"
+    },
+    "index_summary_capacity" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "index_summary_capacity_in_mb" : {
+      "description" : "Deprecated. Use 'index_summary_capacity' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "index_summary_resize_interval" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "index_summary_resize_interval_in_minutes" : {
+      "description" : "Deprecated. Use 'index_summary_resize_interval' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "gc_log_threshold" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "gc_log_threshold_in_ms" : {
+      "description" : "Deprecated. Use 'gc_log_threshold' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "gc_warn_threshold" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "gc_warn_threshold_in_ms" : {
+      "description" : "Deprecated. Use 'gc_warn_threshold' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "gc_concurrent_phase_log_threshold" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "gc_concurrent_phase_warn_threshold" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "trace_type_query_ttl" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "tracetype_query_ttl" : {
+      "description" : "Deprecated. Use 'trace_type_query_ttl' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "trace_type_repair_ttl" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "tracetype_repair_ttl" : {
+      "description" : "Deprecated. Use 'trace_type_repair_ttl' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "ideal_consistency_level" : {
+      "type" : "string",
+      "enum" : [ "ANY", "ONE", "TWO", "THREE", "QUORUM", "ALL", "LOCAL_QUORUM", "EACH_QUORUM", "SERIAL", "LOCAL_SERIAL", "LOCAL_ONE", "NODE_LOCAL" ]
+    },
+    "windows_timer_interval" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "otc_coalescing_strategy" : {
+      "type" : [ "string", "null" ],
+      "deprecated" : true
+    },
+    "otc_coalescing_window_us" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "otc_coalescing_enough_coalesced_messages" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "otc_backlog_expiration_interval_ms" : {
+      "type" : "integer",
+      "deprecated" : true
+    },
+    "prepared_statements_cache_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "prepared_statements_cache_size_mb" : {
+      "description" : "Deprecated. Use 'prepared_statements_cache_size' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "user_defined_functions_enabled" : {
+      "type" : "boolean"
+    },
+    "enable_user_defined_functions" : {
+      "type" : "boolean",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'user_defined_functions_enabled' instead."
+    },
+    "scripted_user_defined_functions_enabled" : {
+      "type" : "boolean",
+      "deprecated" : true
+    },
+    "enable_scripted_user_defined_functions" : {
+      "type" : "boolean",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'scripted_user_defined_functions_enabled' instead."
+    },
+    "materialized_views_enabled" : {
+      "type" : "boolean"
+    },
+    "enable_materialized_views" : {
+      "type" : "boolean",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'materialized_views_enabled' instead."
+    },
+    "materialized_views_on_repair_enabled" : {
+      "type" : "boolean"
+    },
+    "transient_replication_enabled" : {
+      "type" : "boolean"
+    },
+    "enable_transient_replication" : {
+      "type" : "boolean",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'transient_replication_enabled' instead."
+    },
+    "sasi_indexes_enabled" : {
+      "type" : "boolean"
+    },
+    "enable_sasi_indexes" : {
+      "type" : "boolean",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'sasi_indexes_enabled' instead."
+    },
+    "drop_compact_storage_enabled" : {
+      "type" : "boolean"
+    },
+    "enable_drop_compact_storage" : {
+      "type" : "boolean",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'drop_compact_storage_enabled' instead."
+    },
+    "cursor_compaction_enabled" : {
+      "type" : "boolean"
+    },
+    "use_statements_enabled" : {
+      "type" : "boolean"
+    },
+    "user_defined_functions_threads_enabled" : {
+      "type" : "boolean"
+    },
+    "enable_user_defined_functions_threads" : {
+      "type" : "boolean",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'user_defined_functions_threads_enabled' instead."
+    },
+    "allow_insecure_udfs" : {
+      "type" : "boolean"
+    },
+    "allow_extra_insecure_udfs" : {
+      "type" : "boolean"
+    },
+    "dynamic_data_masking_enabled" : {
+      "type" : "boolean"
+    },
+    "user_defined_functions_warn_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "user_defined_function_warn_timeout" : {
+      "description" : "Deprecated. Use 'user_defined_functions_warn_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "user_defined_functions_fail_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "user_defined_function_fail_timeout" : {
+      "description" : "Deprecated. Use 'user_defined_functions_fail_timeout' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "user_function_timeout_policy" : {
+      "type" : "string",
+      "enum" : [ "ignore", "die", "die_immediate" ]
+    },
+    "back_pressure_enabled" : {
+      "type" : "boolean",
+      "deprecated" : true
+    },
+    "back_pressure_strategy" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      }, {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "class_name" : {
+              "type" : "string",
+              "description" : "Fully qualified class name"
+            },
+            "parameters" : {
+              "description" : "Key-value parameters for the class",
+              "oneOf" : [ {
+                "type" : "object",
+                "additionalProperties" : true
+              }, {
+                "type" : "array",
+                "items" : {
+                  "type" : [ "object", "null" ],
+                  "additionalProperties" : true
+                }
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "class_name" ],
+          "additionalProperties" : false
+        }
+      } ],
+      "deprecated" : true
+    },
+    "concurrent_validations" : {
+      "type" : "integer"
+    },
+    "repair_command_pool_full_strategy" : {
+      "type" : "string",
+      "enum" : [ "queue", "reject" ]
+    },
+    "repair_command_pool_size" : {
+      "type" : "integer"
+    },
+    "block_for_peers_timeout_in_secs" : {
+      "type" : "integer"
+    },
+    "block_for_peers_in_remote_dcs" : {
+      "type" : "boolean"
+    },
+    "automatic_sstable_upgrade" : {
+      "type" : "boolean"
+    },
+    "max_concurrent_automatic_sstable_upgrades" : {
+      "type" : "integer"
+    },
+    "stream_entire_sstables" : {
+      "type" : "boolean"
+    },
+    "skip_stream_disk_space_check" : {
+      "type" : "boolean"
+    },
+    "audit_logging_options" : {
+      "$ref" : "#/$defs/audit_AuditLogOptions"
+    },
+    "full_query_logging_options" : {
+      "$ref" : "#/$defs/fql_FullQueryLoggerOptions"
+    },
+    "corrupted_tombstone_strategy" : {
+      "type" : "string",
+      "enum" : [ "disabled", "warn", "exception" ]
+    },
+    "diagnostic_events_enabled" : {
+      "type" : "boolean"
+    },
+    "default_keyspace_rf" : {
+      "type" : "integer"
+    },
+    "repaired_data_tracking_for_range_reads_enabled" : {
+      "type" : "boolean"
+    },
+    "repaired_data_tracking_for_partition_reads_enabled" : {
+      "type" : "boolean"
+    },
+    "report_unconfirmed_repaired_data_mismatches" : {
+      "type" : "boolean"
+    },
+    "snapshot_on_repaired_data_mismatch" : {
+      "type" : "boolean"
+    },
+    "validation_preview_purge_head_start" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "validation_preview_purge_head_start_in_sec" : {
+      "description" : "Deprecated. Use 'validation_preview_purge_head_start' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "auth_cache_warming_enabled" : {
+      "type" : "boolean"
+    },
+    "auth_read_consistency_level" : {
+      "type" : [ "string", "null" ]
+    },
+    "auth_write_consistency_level" : {
+      "type" : [ "string", "null" ]
+    },
+    "partition_denylist_enabled" : {
+      "type" : "boolean"
+    },
+    "denylist_writes_enabled" : {
+      "type" : "boolean"
+    },
+    "denylist_reads_enabled" : {
+      "type" : "boolean"
+    },
+    "denylist_range_reads_enabled" : {
+      "type" : "boolean"
+    },
+    "denylist_refresh" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "denylist_initial_load_retry" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "denylist_max_keys_per_table" : {
+      "type" : "integer"
+    },
+    "denylist_max_keys_total" : {
+      "type" : "integer"
+    },
+    "denylist_consistency_level" : {
+      "type" : "string",
+      "enum" : [ "ANY", "ONE", "TWO", "THREE", "QUORUM", "ALL", "LOCAL_QUORUM", "EACH_QUORUM", "SERIAL", "LOCAL_SERIAL", "LOCAL_ONE", "NODE_LOCAL" ]
+    },
+    "initial_range_tombstone_list_allocation_size" : {
+      "type" : "integer"
+    },
+    "range_tombstone_list_growth_factor" : {
+      "type" : "number"
+    },
+    "sai_options" : {
+      "$ref" : "#/$defs/StorageAttachedIndexOptions"
+    },
+    "snapshot_on_duplicate_row_detection" : {
+      "type" : "boolean"
+    },
+    "check_for_duplicate_rows_during_reads" : {
+      "type" : "boolean"
+    },
+    "check_for_duplicate_rows_during_compaction" : {
+      "type" : "boolean"
+    },
+    "autocompaction_on_startup_enabled" : {
+      "type" : "boolean"
+    },
+    "auto_optimise_inc_repair_streams" : {
+      "type" : "boolean"
+    },
+    "auto_optimise_full_repair_streams" : {
+      "type" : "boolean"
+    },
+    "auto_optimise_preview_repair_streams" : {
+      "type" : "boolean"
+    },
+    "uuid_sstable_identifiers_enabled" : {
+      "type" : "boolean"
+    },
+    "consecutive_message_errors_threshold" : {
+      "type" : "integer"
+    },
+    "client_error_reporting_exclusions" : {
+      "type" : "object",
+      "properties" : {
+        "subnets" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "internode_error_reporting_exclusions" : {
+      "type" : "object",
+      "properties" : {
+        "subnets" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "invalid_legacy_protocol_magic_no_spam_enabled" : {
+      "type" : "boolean"
+    },
+    "keyspaces_warn_threshold" : {
+      "type" : "integer"
+    },
+    "keyspace_count_warn_threshold" : {
+      "type" : "integer",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'keyspaces_warn_threshold' instead."
+    },
+    "keyspaces_fail_threshold" : {
+      "type" : "integer"
+    },
+    "tables_warn_threshold" : {
+      "type" : "integer"
+    },
+    "table_count_warn_threshold" : {
+      "type" : "integer",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'tables_warn_threshold' instead."
+    },
+    "tables_fail_threshold" : {
+      "type" : "integer"
+    },
+    "columns_per_table_warn_threshold" : {
+      "type" : "integer"
+    },
+    "columns_per_table_fail_threshold" : {
+      "type" : "integer"
+    },
+    "secondary_indexes_per_table_warn_threshold" : {
+      "type" : "integer"
+    },
+    "secondary_indexes_per_table_fail_threshold" : {
+      "type" : "integer"
+    },
+    "materialized_views_per_table_warn_threshold" : {
+      "type" : "integer"
+    },
+    "materialized_views_per_table_fail_threshold" : {
+      "type" : "integer"
+    },
+    "page_size_warn_threshold" : {
+      "type" : "integer"
+    },
+    "page_size_fail_threshold" : {
+      "type" : "integer"
+    },
+    "partition_keys_in_select_warn_threshold" : {
+      "type" : "integer"
+    },
+    "partition_keys_in_select_fail_threshold" : {
+      "type" : "integer"
+    },
+    "in_select_cartesian_product_warn_threshold" : {
+      "type" : "integer"
+    },
+    "in_select_cartesian_product_fail_threshold" : {
+      "type" : "integer"
+    },
+    "table_properties_warned" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "table_properties_ignored" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "table_properties_disallowed" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "keyspace_properties_warned" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "keyspace_properties_ignored" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "keyspace_properties_disallowed" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "read_consistency_levels_warned" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : "string",
+        "enum" : [ "ANY", "ONE", "TWO", "THREE", "QUORUM", "ALL", "LOCAL_QUORUM", "EACH_QUORUM", "SERIAL", "LOCAL_SERIAL", "LOCAL_ONE", "NODE_LOCAL" ]
+      }
+    },
+    "read_consistency_levels_disallowed" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : "string",
+        "enum" : [ "ANY", "ONE", "TWO", "THREE", "QUORUM", "ALL", "LOCAL_QUORUM", "EACH_QUORUM", "SERIAL", "LOCAL_SERIAL", "LOCAL_ONE", "NODE_LOCAL" ]
+      }
+    },
+    "write_consistency_levels_warned" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : "string",
+        "enum" : [ "ANY", "ONE", "TWO", "THREE", "QUORUM", "ALL", "LOCAL_QUORUM", "EACH_QUORUM", "SERIAL", "LOCAL_SERIAL", "LOCAL_ONE", "NODE_LOCAL" ]
+      }
+    },
+    "write_consistency_levels_disallowed" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : "string",
+        "enum" : [ "ANY", "ONE", "TWO", "THREE", "QUORUM", "ALL", "LOCAL_QUORUM", "EACH_QUORUM", "SERIAL", "LOCAL_SERIAL", "LOCAL_ONE", "NODE_LOCAL" ]
+      }
+    },
+    "user_timestamps_enabled" : {
+      "type" : "boolean"
+    },
+    "alter_table_enabled" : {
+      "type" : "boolean"
+    },
+    "group_by_enabled" : {
+      "type" : "boolean"
+    },
+    "bulk_load_enabled" : {
+      "type" : "boolean"
+    },
+    "drop_truncate_table_enabled" : {
+      "type" : "boolean"
+    },
+    "drop_keyspace_enabled" : {
+      "type" : "boolean"
+    },
+    "secondary_indexes_enabled" : {
+      "type" : "boolean"
+    },
+    "force_optimized_index_status_format" : {
+      "type" : "boolean"
+    },
+    "default_secondary_index" : {
+      "type" : [ "string", "null" ]
+    },
+    "default_secondary_index_enabled" : {
+      "type" : "boolean"
+    },
+    "uncompressed_tables_enabled" : {
+      "type" : "boolean"
+    },
+    "compact_tables_enabled" : {
+      "type" : "boolean"
+    },
+    "read_before_write_list_operations_enabled" : {
+      "type" : "boolean"
+    },
+    "allow_filtering_enabled" : {
+      "type" : "boolean"
+    },
+    "simplestrategy_enabled" : {
+      "type" : "boolean"
+    },
+    "partition_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "compaction_large_partition_warning_threshold_mb" : {
+      "description" : "Deprecated. Use 'partition_size_warn_threshold' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "compaction_large_partition_warning_threshold" : {
+      "description" : "Deprecated. Use 'partition_size_warn_threshold' instead.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ],
+      "deprecated" : true
+    },
+    "partition_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "partition_tombstones_warn_threshold" : {
+      "type" : "integer"
+    },
+    "compaction_tombstone_warning_threshold" : {
+      "type" : "integer",
+      "deprecated" : true,
+      "description" : "Deprecated. Use 'partition_tombstones_warn_threshold' instead."
+    },
+    "partition_tombstones_fail_threshold" : {
+      "type" : "integer"
+    },
+    "column_value_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_value_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_ascii_value_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_ascii_value_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_blob_value_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_blob_value_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_text_and_varchar_value_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_text_and_varchar_value_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_varchar_value_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "column_varchar_value_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "collection_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "collection_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "collection_map_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "collection_map_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "collection_set_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "collection_set_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "collection_list_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "collection_list_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "items_per_collection_warn_threshold" : {
+      "type" : "integer"
+    },
+    "items_per_collection_fail_threshold" : {
+      "type" : "integer"
+    },
+    "fields_per_udt_warn_threshold" : {
+      "type" : "integer"
+    },
+    "fields_per_udt_fail_threshold" : {
+      "type" : "integer"
+    },
+    "vector_type_enabled" : {
+      "type" : "boolean"
+    },
+    "vector_dimensions_warn_threshold" : {
+      "type" : "integer"
+    },
+    "vector_dimensions_fail_threshold" : {
+      "type" : "integer"
+    },
+    "data_disk_usage_percentage_warn_threshold" : {
+      "type" : "integer"
+    },
+    "data_disk_usage_percentage_fail_threshold" : {
+      "type" : "integer"
+    },
+    "data_disk_usage_max_disk_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "data_disk_usage_keyspace_wide_protection_enabled" : {
+      "type" : "boolean"
+    },
+    "minimum_replication_factor_warn_threshold" : {
+      "type" : "integer"
+    },
+    "minimum_replication_factor_fail_threshold" : {
+      "type" : "integer"
+    },
+    "maximum_replication_factor_warn_threshold" : {
+      "type" : "integer"
+    },
+    "maximum_replication_factor_fail_threshold" : {
+      "type" : "integer"
+    },
+    "zero_ttl_on_twcs_warned" : {
+      "type" : "boolean"
+    },
+    "zero_ttl_on_twcs_enabled" : {
+      "type" : "boolean"
+    },
+    "non_partition_restricted_index_query_enabled" : {
+      "type" : "boolean"
+    },
+    "intersect_filtering_query_warned" : {
+      "type" : "boolean"
+    },
+    "intersect_filtering_query_enabled" : {
+      "type" : "boolean"
+    },
+    "unset_training_min_frequency_warned" : {
+      "type" : "boolean"
+    },
+    "unset_training_min_frequency_enabled" : {
+      "type" : "boolean"
+    },
+    "sai_sstable_indexes_per_query_warn_threshold" : {
+      "type" : "integer"
+    },
+    "sai_sstable_indexes_per_query_fail_threshold" : {
+      "type" : "integer"
+    },
+    "sai_string_term_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "sai_string_term_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "sai_frozen_term_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "sai_frozen_term_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "sai_vector_term_size_warn_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "sai_vector_term_size_fail_threshold" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "streaming_state_expires" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "streaming_state_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "streaming_stats_enabled" : {
+      "type" : "boolean"
+    },
+    "streaming_slow_events_log_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "startup_checks" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "object",
+        "additionalProperties" : { }
+      }
+    },
+    "repair_state_expires" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "repair_state_size" : {
+      "type" : "integer"
+    },
+    "maximum_timestamp_warn_threshold" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "maximum_timestamp_fail_threshold" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "minimum_timestamp_warn_threshold" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "minimum_timestamp_fail_threshold" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "password_policy_reconfiguration_enabled" : {
+      "type" : "boolean"
+    },
+    "role_name_policy_reconfiguration_enabled" : {
+      "type" : "boolean"
+    },
+    "password_policy" : {
+      "type" : "object",
+      "additionalProperties" : true
+    },
+    "role_name_policy" : {
+      "type" : "object",
+      "additionalProperties" : true
+    },
+    "auto_repair" : {
+      "$ref" : "#/$defs/repair_autorepair_AutoRepairConfig"
+    },
+    "paxos_variant" : {
+      "type" : "string",
+      "enum" : [ "v1_without_linearizable_reads_or_rejected_writes", "v1", "v2_without_linearizable_reads", "v2_without_linearizable_reads_or_rejected_writes", "v2" ]
+    },
+    "skip_paxos_repair_on_topology_change" : {
+      "type" : "boolean"
+    },
+    "paxos_purge_grace_period" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "paxos_on_linearizability_violations" : {
+      "type" : "string",
+      "enum" : [ "fail", "log", "ignore" ]
+    },
+    "paxos_state_purging" : {
+      "type" : "string",
+      "enum" : [ "legacy", "gc_grace", "repaired" ]
+    },
+    "paxos_repair_enabled" : {
+      "type" : "boolean"
+    },
+    "paxos_topology_repair_no_dc_checks" : {
+      "type" : "boolean"
+    },
+    "paxos_topology_repair_strict_each_quorum" : {
+      "type" : "boolean"
+    },
+    "skip_paxos_repair_on_topology_change_keyspaces" : {
+      "type" : "array",
+      "uniqueItems" : true,
+      "items" : {
+        "type" : [ "string", "null" ]
+      }
+    },
+    "paxos_contention_wait_randomizer" : {
+      "type" : [ "string", "null" ]
+    },
+    "paxos_contention_min_wait" : {
+      "type" : [ "string", "null" ]
+    },
+    "paxos_contention_max_wait" : {
+      "type" : [ "string", "null" ]
+    },
+    "paxos_contention_min_delta" : {
+      "type" : [ "string", "null" ]
+    },
+    "paxos_repair_parallelism" : {
+      "type" : "integer"
+    },
+    "sstable_read_rate_persistence_enabled" : {
+      "type" : "boolean"
+    },
+    "client_request_size_metrics_enabled" : {
+      "type" : "boolean"
+    },
+    "max_top_size_partition_count" : {
+      "type" : "integer"
+    },
+    "max_top_tombstone_partition_count" : {
+      "type" : "integer"
+    },
+    "min_tracked_partition_size" : {
+      "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "min_tracked_partition_tombstone_count" : {
+      "type" : "integer"
+    },
+    "top_partitions_enabled" : {
+      "type" : "boolean"
+    },
+    "repair" : {
+      "$ref" : "#/$defs/RepairConfig"
+    },
+    "default_compaction" : {
+      "description" : "Pluggable class with optional parameters.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "properties" : {
+          "class_name" : {
+            "type" : "string",
+            "description" : "Fully qualified class name"
+          },
+          "parameters" : {
+            "description" : "Key-value parameters for the class",
+            "oneOf" : [ {
+              "type" : "object",
+              "additionalProperties" : true
+            }, {
+              "type" : "array",
+              "items" : {
+                "type" : [ "object", "null" ],
+                "additionalProperties" : true
+              }
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "class_name" ],
+        "additionalProperties" : false
+      } ]
+    },
+    "accord" : {
+      "$ref" : "#/$defs/AccordSpec"
+    },
+    "dump_heap_on_uncaught_exception" : {
+      "type" : "boolean"
+    },
+    "heap_dump_path" : {
+      "type" : [ "string", "null" ]
+    },
+    "severity_during_decommission" : {
+      "type" : "number"
+    },
+    "storage_compatibility_mode" : {
+      "type" : "string",
+      "enum" : [ "CASSANDRA_4", "CASSANDRA_5", "UPGRADING", "NONE" ]
+    },
+    "progress_barrier_min_consistency_level" : {
+      "type" : "string",
+      "enum" : [ "ANY", "ONE", "TWO", "THREE", "QUORUM", "ALL", "LOCAL_QUORUM", "EACH_QUORUM", "SERIAL", "LOCAL_SERIAL", "LOCAL_ONE", "NODE_LOCAL" ]
+    },
+    "progress_barrier_default_consistency_level" : {
+      "type" : "string",
+      "enum" : [ "ANY", "ONE", "TWO", "THREE", "QUORUM", "ALL", "LOCAL_QUORUM", "EACH_QUORUM", "SERIAL", "LOCAL_SERIAL", "LOCAL_ONE", "NODE_LOCAL" ]
+    },
+    "progress_barrier_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "progress_barrier_backoff" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "discovery_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "unsafe_tcm_mode" : {
+      "type" : "boolean"
+    },
+    "triggers_policy" : {
+      "type" : "string",
+      "enum" : [ "enabled", "disabled", "forbidden" ]
+    },
+    "cql_start_time" : {
+      "type" : "string",
+      "enum" : [ "REQUEST", "QUEUE" ]
+    },
+    "native_transport_throw_on_overload" : {
+      "type" : "boolean"
+    },
+    "native_transport_queue_max_item_age_threshold" : {
+      "type" : "number"
+    },
+    "native_transport_min_backoff_on_queue_overload" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "native_transport_max_backoff_on_queue_overload" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "native_transport_timeout" : {
+      "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "integer"
+      }, {
+        "type" : "null"
+      } ]
+    },
+    "enforce_native_deadline_for_hints" : {
+      "type" : "boolean"
+    },
+    "paxos_repair_race_wait" : {
+      "type" : "boolean"
+    },
+    "gossip_quarantine_disabled" : {
+      "type" : "boolean"
+    }
+  },
+  "additionalProperties" : false,
+  "$defs" : {
+    "repair_autorepair_AutoRepairConfig_Options" : {
+      "type" : "object",
+      "properties" : {
+        "enabled" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "repair_by_keyspace" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "number_of_repair_threads" : {
+          "type" : [ "integer", "null" ]
+        },
+        "parallel_repair_count" : {
+          "type" : [ "integer", "null" ]
+        },
+        "parallel_repair_percentage" : {
+          "type" : [ "integer", "null" ]
+        },
+        "allow_parallel_replica_repair" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "allow_parallel_replica_repair_across_schedules" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "sstable_upper_threshold" : {
+          "type" : [ "integer", "null" ]
+        },
+        "min_repair_interval" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "ignore_dcs" : {
+          "type" : "array",
+          "uniqueItems" : true,
+          "items" : {
+            "type" : [ "string", "null" ]
+          }
+        },
+        "repair_primary_token_range_only" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "force_repair_new_node" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "table_max_repair_time" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "materialized_view_repair_enabled" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "token_range_splitter" : {
+          "description" : "Pluggable class with optional parameters.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "object",
+            "properties" : {
+              "class_name" : {
+                "type" : "string",
+                "description" : "Fully qualified class name"
+              },
+              "parameters" : {
+                "description" : "Key-value parameters for the class",
+                "oneOf" : [ {
+                  "type" : "object",
+                  "additionalProperties" : true
+                }, {
+                  "type" : "array",
+                  "items" : {
+                    "type" : [ "object", "null" ],
+                    "additionalProperties" : true
+                  }
+                }, {
+                  "type" : "null"
+                } ]
+              }
+            },
+            "required" : [ "class_name" ],
+            "additionalProperties" : false
+          } ]
+        },
+        "initial_scheduler_delay" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "repair_session_timeout" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "repair_max_retries" : {
+          "type" : [ "integer", "null" ]
+        },
+        "repair_retry_backoff" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "EncryptionOptions_ServerEncryptionOptions" : {
+      "type" : "object",
+      "properties" : {
+        "internode_encryption" : {
+          "type" : "string",
+          "enum" : [ "all", "none", "dc", "rack" ]
+        },
+        "legacy_ssl_storage_port_enabled" : {
+          "type" : "boolean"
+        },
+        "outbound_keystore" : {
+          "type" : [ "string", "null" ]
+        },
+        "outbound_keystore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "outbound_keystore_password_file" : {
+          "type" : [ "string", "null" ]
+        },
+        "ssl_context_factory" : {
+          "description" : "Pluggable class with optional parameters.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "object",
+            "properties" : {
+              "class_name" : {
+                "type" : "string",
+                "description" : "Fully qualified class name"
+              },
+              "parameters" : {
+                "description" : "Key-value parameters for the class",
+                "oneOf" : [ {
+                  "type" : "object",
+                  "additionalProperties" : true
+                }, {
+                  "type" : "array",
+                  "items" : {
+                    "type" : [ "object", "null" ],
+                    "additionalProperties" : true
+                  }
+                }, {
+                  "type" : "null"
+                } ]
+              }
+            },
+            "required" : [ "class_name" ],
+            "additionalProperties" : false
+          } ]
+        },
+        "keystore" : {
+          "type" : [ "string", "null" ]
+        },
+        "keystore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "keystore_password_file" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore_password_file" : {
+          "type" : [ "string", "null" ]
+        },
+        "cipher_suites" : {
+          "type" : "array",
+          "items" : {
+            "type" : [ "string", "null" ]
+          }
+        },
+        "protocol" : {
+          "type" : [ "string", "null" ]
+        },
+        "accepted_protocols" : {
+          "type" : "array",
+          "items" : {
+            "type" : [ "string", "null" ]
+          }
+        },
+        "algorithm" : {
+          "type" : [ "string", "null" ]
+        },
+        "store_type" : {
+          "type" : [ "string", "null" ]
+        },
+        "require_client_auth" : {
+          "type" : [ "string", "boolean" ]
+        },
+        "require_endpoint_verification" : {
+          "type" : "boolean"
+        },
+        "max_certificate_validity_period" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "certificate_validity_warn_threshold" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "enabled" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "optional" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "is_enabled" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "is_optional" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "ssl_context_factory_instance" : {
+          "$ref" : "#/$defs/security_ISslContextFactory"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "InheritingClass" : {
+      "type" : "object",
+      "properties" : {
+        "inherits" : {
+          "type" : [ "string", "null" ]
+        },
+        "class_name" : {
+          "type" : [ "string", "null" ]
+        },
+        "parameters" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : [ "string", "null" ]
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "JMXServerOptions" : {
+      "type" : "object",
+      "properties" : {
+        "enabled" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "remote" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "jmx_port" : {
+          "type" : "integer"
+        },
+        "rmi_port" : {
+          "type" : "integer"
+        },
+        "authenticate" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "jmx_encryption_options" : {
+          "$ref" : "#/$defs/EncryptionOptions_ClientEncryptionOptions"
+        },
+        "login_config_name" : {
+          "type" : [ "string", "null" ]
+        },
+        "login_config_file" : {
+          "type" : [ "string", "null" ]
+        },
+        "password_file" : {
+          "type" : [ "string", "null" ]
+        },
+        "access_file" : {
+          "type" : [ "string", "null" ]
+        },
+        "authorizer" : {
+          "type" : [ "string", "null" ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "repair_autorepair_IAutoRepairTokenRangeSplitter" : {
+      "type" : "object",
+      "properties" : { },
+      "additionalProperties" : false
+    },
+    "EncryptionOptions_ClientEncryptionOptions" : {
+      "type" : "object",
+      "properties" : {
+        "ssl_context_factory" : {
+          "description" : "Pluggable class with optional parameters.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "object",
+            "properties" : {
+              "class_name" : {
+                "type" : "string",
+                "description" : "Fully qualified class name"
+              },
+              "parameters" : {
+                "description" : "Key-value parameters for the class",
+                "oneOf" : [ {
+                  "type" : "object",
+                  "additionalProperties" : true
+                }, {
+                  "type" : "array",
+                  "items" : {
+                    "type" : [ "object", "null" ],
+                    "additionalProperties" : true
+                  }
+                }, {
+                  "type" : "null"
+                } ]
+              }
+            },
+            "required" : [ "class_name" ],
+            "additionalProperties" : false
+          } ]
+        },
+        "keystore" : {
+          "type" : [ "string", "null" ]
+        },
+        "keystore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "keystore_password_file" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore_password" : {
+          "type" : [ "string", "null" ]
+        },
+        "truststore_password_file" : {
+          "type" : [ "string", "null" ]
+        },
+        "cipher_suites" : {
+          "type" : "array",
+          "items" : {
+            "type" : [ "string", "null" ]
+          }
+        },
+        "protocol" : {
+          "type" : [ "string", "null" ]
+        },
+        "accepted_protocols" : {
+          "type" : "array",
+          "items" : {
+            "type" : [ "string", "null" ]
+          }
+        },
+        "algorithm" : {
+          "type" : [ "string", "null" ]
+        },
+        "store_type" : {
+          "type" : [ "string", "null" ]
+        },
+        "require_client_auth" : {
+          "type" : [ "string", "boolean" ]
+        },
+        "require_endpoint_verification" : {
+          "type" : "boolean"
+        },
+        "max_certificate_validity_period" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "certificate_validity_warn_threshold" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "enabled" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "optional" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "is_enabled" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "is_optional" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "ssl_context_factory_instance" : {
+          "$ref" : "#/$defs/security_ISslContextFactory"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "audit_AuditLogOptions" : {
+      "type" : "object",
+      "properties" : {
+        "enabled" : {
+          "type" : "boolean"
+        },
+        "logger" : {
+          "description" : "Pluggable class with optional parameters.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "object",
+            "properties" : {
+              "class_name" : {
+                "type" : "string",
+                "description" : "Fully qualified class name"
+              },
+              "parameters" : {
+                "description" : "Key-value parameters for the class",
+                "oneOf" : [ {
+                  "type" : "object",
+                  "additionalProperties" : true
+                }, {
+                  "type" : "array",
+                  "items" : {
+                    "type" : [ "object", "null" ],
+                    "additionalProperties" : true
+                  }
+                }, {
+                  "type" : "null"
+                } ]
+              }
+            },
+            "required" : [ "class_name" ],
+            "additionalProperties" : false
+          }, {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "class_name" : {
+                  "type" : "string",
+                  "description" : "Fully qualified class name"
+                },
+                "parameters" : {
+                  "description" : "Key-value parameters for the class",
+                  "oneOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : true
+                  }, {
+                    "type" : "array",
+                    "items" : {
+                      "type" : [ "object", "null" ],
+                      "additionalProperties" : true
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                }
+              },
+              "required" : [ "class_name" ],
+              "additionalProperties" : false
+            }
+          } ]
+        },
+        "included_keyspaces" : {
+          "type" : [ "string", "null" ]
+        },
+        "excluded_keyspaces" : {
+          "type" : [ "string", "null" ]
+        },
+        "included_categories" : {
+          "type" : [ "string", "null" ]
+        },
+        "excluded_categories" : {
+          "type" : [ "string", "null" ]
+        },
+        "included_users" : {
+          "type" : [ "string", "null" ]
+        },
+        "excluded_users" : {
+          "type" : [ "string", "null" ]
+        },
+        "audit_logs_dir" : {
+          "type" : [ "string", "null" ]
+        },
+        "archive_command" : {
+          "type" : [ "string", "null" ]
+        },
+        "allow_nodetool_archive_command" : {
+          "type" : "boolean"
+        },
+        "roll_cycle" : {
+          "type" : [ "string", "null" ]
+        },
+        "block" : {
+          "type" : "boolean"
+        },
+        "max_queue_weight" : {
+          "type" : "integer"
+        },
+        "max_log_size" : {
+          "type" : "integer"
+        },
+        "max_archive_retries" : {
+          "type" : "integer"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "TransparentDataEncryptionOptions" : {
+      "type" : "object",
+      "properties" : {
+        "enabled" : {
+          "type" : "boolean"
+        },
+        "chunk_length_kb" : {
+          "type" : "integer"
+        },
+        "cipher" : {
+          "type" : [ "string", "null" ]
+        },
+        "key_alias" : {
+          "type" : [ "string", "null" ]
+        },
+        "iv_length" : {
+          "type" : "integer"
+        },
+        "key_provider" : {
+          "description" : "Pluggable class with optional parameters.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "object",
+            "properties" : {
+              "class_name" : {
+                "type" : "string",
+                "description" : "Fully qualified class name"
+              },
+              "parameters" : {
+                "description" : "Key-value parameters for the class",
+                "oneOf" : [ {
+                  "type" : "object",
+                  "additionalProperties" : true
+                }, {
+                  "type" : "array",
+                  "items" : {
+                    "type" : [ "object", "null" ],
+                    "additionalProperties" : true
+                  }
+                }, {
+                  "type" : "null"
+                } ]
+              }
+            },
+            "required" : [ "class_name" ],
+            "additionalProperties" : false
+          }, {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "class_name" : {
+                  "type" : "string",
+                  "description" : "Fully qualified class name"
+                },
+                "parameters" : {
+                  "description" : "Key-value parameters for the class",
+                  "oneOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : true
+                  }, {
+                    "type" : "array",
+                    "items" : {
+                      "type" : [ "object", "null" ],
+                      "additionalProperties" : true
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                }
+              },
+              "required" : [ "class_name" ],
+              "additionalProperties" : false
+            }
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "RepairRetrySpec" : {
+      "type" : "object",
+      "properties" : {
+        "merkle_tree_response" : {
+          "$ref" : "#/$defs/RetrySpec_Partial"
+        },
+        "max_attempts" : {
+          "type" : [ "integer", "null" ]
+        },
+        "base_sleep_time" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "max_sleep_time" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "service_TimeoutStrategy_Wait" : {
+      "type" : "object",
+      "properties" : { },
+      "additionalProperties" : false
+    },
+    "security_ISslContextFactory" : {
+      "type" : "object",
+      "properties" : { },
+      "additionalProperties" : false
+    },
+    "fql_FullQueryLoggerOptions" : {
+      "type" : "object",
+      "properties" : {
+        "log_dir" : {
+          "type" : [ "string", "null" ]
+        },
+        "archive_command" : {
+          "type" : [ "string", "null" ]
+        },
+        "allow_nodetool_archive_command" : {
+          "type" : "boolean"
+        },
+        "roll_cycle" : {
+          "type" : [ "string", "null" ]
+        },
+        "block" : {
+          "type" : "boolean"
+        },
+        "max_queue_weight" : {
+          "type" : "integer"
+        },
+        "max_log_size" : {
+          "type" : "integer"
+        },
+        "max_archive_retries" : {
+          "type" : "integer"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "AccordSpec" : {
+      "type" : "object",
+      "properties" : {
+        "enabled" : {
+          "type" : "boolean"
+        },
+        "journal_directory" : {
+          "type" : [ "string", "null" ]
+        },
+        "enable_journal_compaction" : {
+          "type" : "boolean"
+        },
+        "enable_virtual_debug_only_keyspace" : {
+          "type" : "boolean"
+        },
+        "queue_shard_model" : {
+          "type" : "string",
+          "enum" : [ "THREAD_PER_SHARD", "THREAD_PER_SHARD_SYNC_QUEUE", "THREAD_POOL_PER_SHARD" ]
+        },
+        "queue_submission_model" : {
+          "type" : "string",
+          "enum" : [ "SYNC", "SEMI_SYNC", "ASYNC", "EXEC_ST" ]
+        },
+        "queue_shard_count" : {
+          "type" : [ "integer", "null" ]
+        },
+        "command_store_shard_count" : {
+          "type" : [ "integer", "null" ]
+        },
+        "max_queued_loads" : {
+          "type" : [ "integer", "null" ]
+        },
+        "max_queued_range_loads" : {
+          "type" : [ "integer", "null" ]
+        },
+        "progress_log_concurrency" : {
+          "type" : [ "integer", "null" ]
+        },
+        "progress_log_query_fallback_timeout" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "cache_size" : {
+          "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "working_set_size" : {
+          "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "shrink_cache_entries_before_eviction" : {
+          "type" : "boolean"
+        },
+        "range_syncpoint_timeout" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "repair_timeout" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "recover_txn" : {
+          "type" : [ "string", "null" ]
+        },
+        "recover_syncpoint" : {
+          "$ref" : "#/$defs/StringRetryStrategy"
+        },
+        "fetch_txn" : {
+          "type" : [ "string", "null" ]
+        },
+        "fetch_syncpoint" : {
+          "type" : [ "string", "null" ]
+        },
+        "expire_txn" : {
+          "type" : [ "string", "null" ]
+        },
+        "expire_syncpoint" : {
+          "type" : [ "string", "null" ]
+        },
+        "expire_epoch_wait" : {
+          "type" : [ "string", "null" ]
+        },
+        "expire_durability" : {
+          "type" : [ "string", "null" ]
+        },
+        "slow_syncpoint_preaccept" : {
+          "type" : [ "string", "null" ]
+        },
+        "slow_txn_preaccept" : {
+          "type" : [ "string", "null" ]
+        },
+        "slow_read" : {
+          "type" : [ "string", "null" ]
+        },
+        "retry_syncpoint" : {
+          "$ref" : "#/$defs/StringRetryStrategy"
+        },
+        "retry_durability" : {
+          "$ref" : "#/$defs/StringRetryStrategy"
+        },
+        "retry_bootstrap" : {
+          "$ref" : "#/$defs/StringRetryStrategy"
+        },
+        "retry_join_bootstrap" : {
+          "$ref" : "#/$defs/StringRetryStrategy"
+        },
+        "retry_fetch_min_epoch" : {
+          "$ref" : "#/$defs/StringRetryStrategy"
+        },
+        "retry_fetch_topology" : {
+          "$ref" : "#/$defs/StringRetryStrategy"
+        },
+        "retry_journal_index_ready" : {
+          "$ref" : "#/$defs/StringRetryStrategy"
+        },
+        "fast_path_update_delay" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "shard_durability_target_splits" : {
+          "type" : "integer"
+        },
+        "shard_durability_max_splits" : {
+          "type" : "integer"
+        },
+        "durability_txnid_lag" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "shard_durability_cycle" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "global_durability_cycle" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "range_migration" : {
+          "type" : "string",
+          "enum" : [ "auto", "explicit" ]
+        },
+        "default_transactional_mode" : {
+          "type" : "string",
+          "enum" : [ "off", "mixed_reads", "full", "test_unsafe_writes", "test_unsafe", "test_interop_read" ]
+        },
+        "ephemeral_read_enabled" : {
+          "type" : "boolean"
+        },
+        "state_cache_listener_jfr_enabled" : {
+          "type" : "boolean"
+        },
+        "catchup_on_start_success_latency" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "catchup_on_start_fail_latency" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "catchup_on_start_max_attempts" : {
+          "type" : "integer"
+        },
+        "catchup_on_start_exit_on_failure" : {
+          "type" : "boolean"
+        },
+        "catchup_on_start" : {
+          "type" : "boolean"
+        },
+        "journal" : {
+          "$ref" : "#/$defs/AccordSpec_JournalSpec"
+        },
+        "mixed_time_source_handling" : {
+          "type" : "string",
+          "enum" : [ "reject", "log", "ignore" ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "StringRetryStrategy" : {
+      "type" : "object",
+      "properties" : {
+        "spec" : {
+          "type" : [ "string", "null" ]
+        },
+        "retry" : {
+          "$ref" : "#/$defs/service_RetryStrategy"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "service_RetryStrategy_WaitRandomizer" : {
+      "type" : "object",
+      "properties" : { },
+      "additionalProperties" : false
+    },
+    "Config_SSTableConfig" : {
+      "type" : "object",
+      "properties" : {
+        "selected_format" : {
+          "type" : [ "string", "null" ]
+        },
+        "format" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : [ "string", "null" ]
+            }
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "StorageAttachedIndexOptions" : {
+      "type" : "object",
+      "properties" : {
+        "segment_write_buffer_size" : {
+          "description" : "Data storage value. Accepts a string (e.g., '256MiB', '1024KiB') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "prioritize_over_legacy_index" : {
+          "type" : "boolean"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "RetrySpec_Partial" : {
+      "type" : "object",
+      "properties" : {
+        "max_attempts" : {
+          "type" : [ "integer", "null" ]
+        },
+        "base_sleep_time" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "max_sleep_time" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        }
+      },
+      "additionalProperties" : false
+    },
+    "service_RetryStrategy" : {
+      "type" : "object",
+      "properties" : {
+        "wait_randomizer" : {
+          "$ref" : "#/$defs/service_RetryStrategy_WaitRandomizer"
+        },
+        "min_min_micros" : {
+          "type" : "integer"
+        },
+        "max_min_micros" : {
+          "type" : "integer"
+        },
+        "max_max_micros" : {
+          "type" : "integer"
+        },
+        "min" : {
+          "$ref" : "#/$defs/service_TimeoutStrategy_Wait"
+        },
+        "max" : {
+          "$ref" : "#/$defs/service_TimeoutStrategy_Wait"
+        },
+        "max_attempts" : {
+          "type" : "integer"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "Config_MemtableOptions" : {
+      "type" : "object",
+      "properties" : {
+        "configurations" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "$ref" : "#/$defs/InheritingClass"
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "RepairConfig" : {
+      "type" : "object",
+      "properties" : {
+        "retries" : {
+          "$ref" : "#/$defs/RepairRetrySpec"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "ReplicaFilteringProtectionOptions" : {
+      "type" : "object",
+      "properties" : {
+        "cached_rows_warn_threshold" : {
+          "type" : "integer"
+        },
+        "cached_rows_fail_threshold" : {
+          "type" : "integer"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "repair_autorepair_AutoRepairConfig" : {
+      "type" : "object",
+      "properties" : {
+        "enabled" : {
+          "type" : [ "boolean", "null" ]
+        },
+        "repair_check_interval" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "history_clear_delete_hosts_buffer_interval" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "repair_task_min_duration" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "mixed_major_version_repair_enabled" : {
+          "type" : "boolean"
+        },
+        "global_settings" : {
+          "$ref" : "#/$defs/repair_autorepair_AutoRepairConfig_Options"
+        },
+        "token_range_splitters" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "$ref" : "#/$defs/repair_autorepair_IAutoRepairTokenRangeSplitter"
+          }
+        },
+        "repair_type_overrides" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "$ref" : "#/$defs/repair_autorepair_AutoRepairConfig_Options"
+          }
+        }
+      },
+      "additionalProperties" : false
+    },
+    "AccordSpec_JournalSpec" : {
+      "type" : "object",
+      "properties" : {
+        "segment_size" : {
+          "type" : "integer"
+        },
+        "compact_max_segments" : {
+          "type" : "integer"
+        },
+        "failure_policy" : {
+          "type" : "string",
+          "enum" : [ "STOP", "STOP_JOURNAL", "IGNORE", "ALLOW_UNSAFE_STARTUP", "DIE" ]
+        },
+        "replay_mode" : {
+          "type" : "string",
+          "enum" : [ "RESET", "ALL", "ONLY_NON_DURABLE" ]
+        },
+        "flush_mode" : {
+          "type" : "string",
+          "enum" : [ "BATCH", "GROUP", "PERIODIC" ]
+        },
+        "flush_period" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "periodic_flush_lag_block" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "compaction_period" : {
+          "description" : "Duration value. Accepts a string (e.g., '10s', '500ms', '1h') or an integer.",
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "integer"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "flush_combined_block_period" : {
+          "type" : "integer"
+        },
+        "version" : {
+          "type" : "string",
+          "enum" : [ "V1" ]
+        }
+      },
+      "additionalProperties" : false
+    }
+  }
+}

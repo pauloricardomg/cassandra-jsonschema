@@ -1,0 +1,29 @@
+#!/bin/bash
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.
+
+
+if [ $# -ne 2 ]; then
+    echo "Usage: bin/validate-schema <schema.json> <cassandra.yaml>" >&2
+    echo "" >&2
+    echo "Validates a YAML (or JSON) file against a JSON Schema (Draft 2020-12)." >&2
+    echo "Exits with code 0 on success, 1 on validation failure." >&2
+    echo "" >&2
+    echo "Arguments:" >&2
+    echo "  schema.json     Path to the JSON Schema file" >&2
+    echo "  cassandra.yaml  Path to the YAML configuration file to validate" >&2
+    echo "" >&2
+    echo "Example:" >&2
+    echo "  bin/validate-schema examples/schema-5.1.json examples/cassandra-5.1-SNAPSHOT.yaml" >&2
+    exit 1
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+CLASSPATH="$PROJECT_DIR/target/classes"
+for jar in "$PROJECT_DIR"/target/lib/*.jar; do
+    CLASSPATH="$CLASSPATH:$jar"
+done
+
+exec java -cp "$CLASSPATH" org.apache.cassandra.jsonschema.ValidateSchema "$@"
